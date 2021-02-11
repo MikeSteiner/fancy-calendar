@@ -1,0 +1,29 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "lib": ["es2017", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@fancy-calendar/calendar/api": ["libs/calendar/api/src/index.ts"],
+      "@fancy-calendar/shared/api": ["libs/shared/api/src/index.ts"],
+      "@fancy-calendar/calendar/features/view": [
+        "libs/calendar/features/view/src/index.ts"
+      ],
+      "@fancy-calendar/calendar/features/dashboard": [
+        "libs/calendar/features/dashboard/src/index.ts"
+      ]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}

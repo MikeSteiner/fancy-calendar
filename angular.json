@@ -1,0 +1,364 @@
+{
+  "version": 1,
+  "cli": {
+    "defaultCollection": "@nrwl/angular"
+  },
+  "schematics": {
+    "@nrwl/angular": {
+      "application": {
+        "linter": "eslint"
+      },
+      "library": {
+        "linter": "eslint"
+      },
+      "storybook-configuration": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/angular:application": {
+      "style": "scss",
+      "linter": "eslint",
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "style": "scss",
+      "linter": "eslint",
+      "unitTestRunner": "jest"
+    },
+    "@nrwl/angular:component": {
+      "style": "scss"
+    }
+  },
+  "defaultProject": "main-app",
+  "projects": {
+    "main-app": {
+      "projectType": "application",
+      "root": "apps/main-app",
+      "sourceRoot": "apps/main-app/src",
+      "prefix": "fancy-calendar",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/main-app",
+            "index": "apps/main-app/src/index.html",
+            "main": "apps/main-app/src/main.ts",
+            "polyfills": "apps/main-app/src/polyfills.ts",
+            "tsConfig": "apps/main-app/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "apps/main-app/src/favicon.ico",
+              "apps/main-app/src/assets"
+            ],
+            "styles": ["apps/main-app/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/main-app/src/environments/environment.ts",
+                  "with": "apps/main-app/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "main-app:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "main-app:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "main-app:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/main-app/src/**/*.ts",
+              "apps/main-app/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/main-app"],
+          "options": {
+            "jestConfig": "apps/main-app/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "main-app-e2e": {
+      "root": "apps/main-app-e2e",
+      "sourceRoot": "apps/main-app-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/main-app-e2e/cypress.json",
+            "tsConfig": "apps/main-app-e2e/tsconfig.e2e.json",
+            "devServerTarget": "main-app:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "main-app:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/main-app-e2e/**/*.{js,ts}"]
+          }
+        }
+      }
+    },
+    "calendar-api": {
+      "projectType": "library",
+      "root": "libs/calendar/api",
+      "sourceRoot": "libs/calendar/api/src",
+      "prefix": "fancy-calendar",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/calendar/api/src/**/*.ts",
+              "libs/calendar/api/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/calendar/api"],
+          "options": {
+            "jestConfig": "libs/calendar/api/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "shared-api": {
+      "projectType": "library",
+      "root": "libs/shared/api",
+      "sourceRoot": "libs/shared/api/src",
+      "prefix": "fancy-calendar",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/shared/api/src/**/*.ts",
+              "libs/shared/api/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/shared/api"],
+          "options": {
+            "jestConfig": "libs/shared/api/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "calendar-features-view": {
+      "projectType": "library",
+      "root": "libs/calendar/features/view",
+      "sourceRoot": "libs/calendar/features/view/src",
+      "prefix": "fancy-calendar",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/calendar/features/view/src/**/*.ts",
+              "libs/calendar/features/view/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/calendar/features/view"],
+          "options": {
+            "jestConfig": "libs/calendar/features/view/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "calendar-features-dashboard": {
+      "projectType": "library",
+      "root": "libs/calendar/features/dashboard",
+      "sourceRoot": "libs/calendar/features/dashboard/src",
+      "prefix": "fancy-calendar",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/calendar/features/dashboard/src/**/*.ts",
+              "libs/calendar/features/dashboard/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/calendar/features/dashboard"],
+          "options": {
+            "jestConfig": "libs/calendar/features/dashboard/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "calendar-app": {
+      "projectType": "application",
+      "root": "apps/calendar-app",
+      "sourceRoot": "apps/calendar-app/src",
+      "prefix": "fancy-calendar",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/calendar-app",
+            "index": "apps/calendar-app/src/index.html",
+            "main": "apps/calendar-app/src/main.ts",
+            "polyfills": "apps/calendar-app/src/polyfills.ts",
+            "tsConfig": "apps/calendar-app/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "apps/calendar-app/src/favicon.ico",
+              "apps/calendar-app/src/assets"
+            ],
+            "styles": ["apps/calendar-app/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/calendar-app/src/environments/environment.ts",
+                  "with": "apps/calendar-app/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "calendar-app:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "calendar-app:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "calendar-app:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/calendar-app/src/**/*.ts",
+              "apps/calendar-app/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/calendar-app"],
+          "options": {
+            "jestConfig": "apps/calendar-app/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "calendar-app-e2e": {
+      "root": "apps/calendar-app-e2e",
+      "sourceRoot": "apps/calendar-app-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/calendar-app-e2e/cypress.json",
+            "tsConfig": "apps/calendar-app-e2e/tsconfig.e2e.json",
+            "devServerTarget": "calendar-app:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "calendar-app:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/calendar-app-e2e/**/*.{js,ts}"]
+          }
+        }
+      }
+    }
+  }
+}

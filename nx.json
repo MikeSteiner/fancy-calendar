@@ -1,0 +1,33 @@
+{
+  "npmScope": "fancy-calendar",
+  "affected": { "defaultBase": "master" },
+  "implicitDependencies": {
+    "angular.json": "*",
+    "package.json": { "dependencies": "*", "devDependencies": "*" },
+    "tsconfig.base.json": "*",
+    "tslint.json": "*",
+    ".eslintrc.json": "*",
+    "nx.json": "*"
+  },
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "@nrwl/nx-cloud",
+      "options": {
+        "accessToken": "OTQ3YTA4OTktZDVlMS00NzQxLWJlNDUtNmFkMDg1NTI2MmM3fHJlYWQtd3JpdGU=",
+        "cacheableOperations": ["build", "test", "lint", "e2e"],
+        "canTrackAnalytics": false,
+        "showUsageWarnings": true
+      }
+    }
+  },
+  "projects": {
+    "main-app": { "tags": [] },
+    "main-app-e2e": { "tags": [], "implicitDependencies": ["main-app"] },
+    "calendar-api": { "tags": [] },
+    "shared-api": { "tags": [] },
+    "calendar-features-view": { "tags": [] },
+    "calendar-features-dashboard": { "tags": [] },
+    "calendar-app": { "tags": [] },
+    "calendar-app-e2e": { "tags": [], "implicitDependencies": ["calendar-app"] }
+  }
+}
