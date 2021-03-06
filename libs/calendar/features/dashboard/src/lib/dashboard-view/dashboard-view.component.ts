@@ -15,7 +15,6 @@ export class DashboardViewComponent implements OnInit {
   current: Date = new Date();
   prev: Date = this.addDays(this.current, -1);
   next: Date = this.addDays(this.current, 1) ;
-  daysOfMonth: Date[] = [this.prev, this.current, this.next];
 
   meetings = this.meetingsService.getAll();
   weekNumber = this.weekService.getNumber(this.current);

@@ -38,7 +38,7 @@ export class WeekService {
     const yearStartDate: Date = new Date(Date.UTC(currentDate.getUTCFullYear(),0,1));
 
     // Calculate full weeks to nearest Thursday
-    const weekNo: number = Math.ceil(( ( (currentDate.getMilliseconds() - yearStartDate.getMilliseconds()) / MS_IN_ONE_DAY) + 1) / 7);
+    const weekNo: number = Math.ceil(( ( (currentDate.getTime() - yearStartDate.getTime()) / MS_IN_ONE_DAY) + 1) / 7);
 
     // Return array of year and week number
     return weekNo;

@@ -34,7 +34,6 @@ export class CalendarGeneratorService {
 
     const weeks = [];
     weekNumbers.forEach((n) => {
-      const days = []
       const newWeek = {
         number: n,
         days: [dateOne, dateOne, dateOne, dateOne, dateOne, dateOne, dateOne]
