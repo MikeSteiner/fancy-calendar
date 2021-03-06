@@ -4,9 +4,9 @@ import { DashboardViewComponent } from './dashboard-view/dashboard-view.componen
 import { TimeNavigationComponent } from './components/time-navigation/time-navigation.component';
 import { DayBoxDetailComponent } from './components/day-box-detail/day-box-detail.component';
 import { DayBoxBaseComponent } from './components/day-box-base/day-box-base.component';
-import {RouterModule} from "@angular/router";
-import {MeetingsService} from "./service/meetings.service";
-import {HttpClient, HttpHandler} from "@angular/common/http";
+import { RouterModule } from "@angular/router";
+
+import { MeetingsService } from "../../../../api/src/lib/meetings/meetings.service";
 
 @NgModule({
   imports: [

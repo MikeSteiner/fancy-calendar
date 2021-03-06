@@ -1,0 +1,15 @@
+.month-container {
+  display: grid;
+  grid-template-columns: 2rem 10rem 10rem 10rem 10rem 10rem 10rem 10rem;
+  grid-template-rows: 6rem 6rem 6rem 6rem 6rem 6rem;
+  grid-gap: 10px;
+
+}
+.week {
+   border: 1px solid red;
+}
+.day {
+  width: 10rem;
+  height: 6rem;
+  border: 1px solid green;
+}
