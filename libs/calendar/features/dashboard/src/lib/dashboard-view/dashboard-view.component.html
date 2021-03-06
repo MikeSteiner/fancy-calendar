@@ -1,15 +1,18 @@
-<ul>
-<!--  <li>{{ meetings | async | json }}</li>-->
-  <div class="month-container">
-    <ng-container *ngFor="let week of weeksInMonth" class="week">
-      <div>{{ week.number }}</div>
-      <div *ngFor="let day of week.days" class="day">
-        {{ day }}
-      </div>
-    </ng-container>
-  </div>
+<!--  <div>{{ meetings | async | json }}</div>-->
+<div class="month-container pt-1">
+  <div></div>
+  <div *ngFor="let dayOfWeek of daysOfWeek" class="day-of-week">{{ dayOfWeek }}</div>
+  <ng-container *ngFor="let week of weeksInMonth" class="week">
+    <div>{{ week.number }}</div>
+    <div *ngFor="let day of week.days" class="day">
+      <p>{{ day.number }}</p>
+      <p>{{ day.date.getDate() + '. ' + day.date.getMonth() }}</p>
+      <p>{{ day.date.getUTCDay() }}:{{ day.isWeekend }}</p>
+    </div>
+  </ng-container>
+</div>
 
-  <div>Current week number{{ weekNumber }}</div>
-  <div>Week numbers in months {{ weekNumbersInMonth }}</div>
-  <div>Weeks in months {{ weeksInMonth | json }}</div>
-</ul>
+<!--  <div>Current week number{{ weekNumber }}</div>-->
+<!--  <div>Week numbers in months {{ weekNumbersInMonth }}</div>-->
+<!--<div>Weeks in months {{ weeksInMonth | json }}</div>-->
+
