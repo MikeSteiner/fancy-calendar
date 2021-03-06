@@ -1,12 +1,19 @@
 <header class="flex">
+  <nav>
+    <ul>
+      <li>
+        <a [routerLink]="['home']">Home</a>
+      </li>
+      <li>
+        <a [routerLink]="['/calendar']">Calendar</a>
+      </li>
+    </ul>
+  </nav>
   <h1>Welcome to {{ title }}!</h1>
 </header>
 <main>
   <h2>Calender App main component</h2>
-
-  <details open>
-    <summary>Add UI library</summary>
-  </details>
+  <router-outlet></router-outlet>
 </main>
 
-<router-outlet></router-outlet>
+
