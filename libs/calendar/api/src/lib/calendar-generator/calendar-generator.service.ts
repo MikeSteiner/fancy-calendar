@@ -60,12 +60,16 @@ export class CalendarGeneratorService {
     const startIndex = date.getUTCDay();
     const startOfWeekDaysOffset = (-1) * (startIndex);
     let nextDate: Date = this.addDays(date, startOfWeekDaysOffset);
+
+    console.log(nextDate);
     do {
       const newDay: Day = this.generateDay(nextDate);
       dayOfWeekIndex = nextDate.getUTCDay();
       days[dayOfWeekIndex] = newDay;
       nextDate =  this.addDays(nextDate, 1);
     } while (dayOfWeekIndex <= WeekUTCDay.Sunday && days.length < 7);
+
+    console.log(days);
 
     return {
       number: this.weekService.getNumber(date),
