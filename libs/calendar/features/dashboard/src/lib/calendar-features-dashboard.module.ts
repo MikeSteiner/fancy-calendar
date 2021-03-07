@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+
+import { MeetingsService } from '@fancy-calendar/calendar/api';
+import { SharedModalModule } from '@fancy-calendar/shared/modal';
+
 import { DashboardViewComponent } from './dashboard-view/dashboard-view.component';
 import { TimeNavigationComponent } from './components/time-navigation/time-navigation.component';
-import { DayBoxDetailComponent } from './components/day-box-detail/day-box-detail.component';
-import { DayBoxBaseComponent } from './components/day-box-base/day-box-base.component';
-import { RouterModule } from "@angular/router";
-
-import { MeetingsService } from "../../../../api/src/lib/services/meetings/meetings.service";
+import { DayDetailComponent } from './components/day-detail/day-detail.component';
 
 @NgModule({
   imports: [
@@ -16,9 +17,10 @@ import { MeetingsService } from "../../../../api/src/lib/services/meetings/meeti
         path: '',
         component: DashboardViewComponent,
       }
-    ])
+    ]),
+    SharedModalModule,
   ],
-  declarations: [DashboardViewComponent, TimeNavigationComponent, DayBoxDetailComponent, DayBoxBaseComponent],
+  declarations: [DashboardViewComponent, TimeNavigationComponent, DayDetailComponent, ],
   providers: [MeetingsService],
 })
 export class CalendarFeaturesDashboardModule {}

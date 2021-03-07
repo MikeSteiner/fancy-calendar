@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DayBoxBaseComponent } from './day-box-base.component';
+import { DayDetailComponent } from './day-detail.component';
 
-describe('DayBoxBaseComponent', () => {
-  let component: DayBoxBaseComponent;
-  let fixture: ComponentFixture<DayBoxBaseComponent>;
+describe('DayDetailComponent', () => {
+  let component: DayDetailComponent;
+  let fixture: ComponentFixture<DayDetailComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DayBoxBaseComponent ]
+      declarations: [ DayDetailComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DayBoxBaseComponent);
+    fixture = TestBed.createComponent(DayDetailComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

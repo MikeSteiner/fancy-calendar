@@ -1,0 +1,9 @@
+<h1>All Meetings for {{ day?.date }}!</h1>
+<div *ngFor="let meeting of meetings">
+  <h2>{{ meeting?.name }}</h2>
+  <span>{{ meeting?.start.getTime() }} - {{ meeting?.end.getTime() }}</span>
+  <span>{{ meeting?.meetingRoom }}</span>
+  <span>{{ meeting?.participants }}</span>
+</div>
+
+

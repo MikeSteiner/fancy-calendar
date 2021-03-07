@@ -2,9 +2,10 @@ import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
-import {Meeting, Week, WeekUTCDay} from '@fancy-calendar/calendar/types';
-import {CalendarGeneratorService, MonthService, WeekService} from '@fancy-calendar/calendar/dates';
-import {MeetingsService} from '@fancy-calendar/calendar/api';
+import {Day, Meeting, Week, WeekUTCDay} from '@fancy-calendar/calendar/types';
+import { CalendarGeneratorService, MonthService, WeekService} from '@fancy-calendar/calendar/dates';
+import { MeetingsService} from '@fancy-calendar/calendar/api';
+import { ModalService} from '@fancy-calendar/shared/modal';
 
 @Component({
   selector: 'fancy-dashboard-view',
@@ -34,13 +35,17 @@ export class DashboardViewComponent implements OnInit {
   displayDate = new Date();
   weeksInMonth: Week[];
 
+  selectedDay: Day;
+  selectedDayMeetings: Meeting[] = [];
+
   daysOfWeek = Object.keys(WeekUTCDay).filter((e) => isNaN(Number(e)));
 
   constructor(
     private meetingsService: MeetingsService,
     private weekService: WeekService,
     private monthService: MonthService,
-    private calendarGeneratorService: CalendarGeneratorService
+    private calendarGeneratorService: CalendarGeneratorService,
+    private modalService: ModalService
   ) { }
 
   ngOnInit(): void {
@@ -73,6 +78,21 @@ export class DashboardViewComponent implements OnInit {
         return isInCurrentDay;
       }))
     )
+  }
+
+  openModal(id: string) {
+    this.modalService.open(id);
+  }
+
+  openSelectedDayModal(id: string, day: Day, meetings: Meeting[]) {
+    console.log(meetings)
+    this.modalService.open(id);
+    this.selectedDay = day;
+    this.selectedDayMeetings = meetings;
+  }
+
+  closeModal(id: string) {
+    this.modalService.close(id);
   }
 
   private loadMeetingsPerMonth(): void {
