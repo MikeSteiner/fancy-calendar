@@ -1,3 +1,11 @@
+.month-navigation {
+  display: flex;
+
+  button {
+
+  }
+}
+
 .month-container {
   display: grid;
   grid-template-columns: 2rem 8rem 8rem 8rem 8rem 8rem 8rem 8rem;
@@ -21,4 +29,23 @@
   width: 8rem;
   height: 7rem;
   border: 1px solid green;
+}
+
+.events {
+  width: 100%;
+
+  ul {
+    display: flex;
+
+    flex-direction: column;
+    justify-content: left;
+    list-style-type: none;
+    padding: 0;
+
+    li {
+      width: 100%;
+      font-size: 0.8rem;
+      color: blue;
+    }
+  }
 }

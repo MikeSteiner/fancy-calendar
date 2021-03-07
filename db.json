@@ -168,6 +168,48 @@
       "name": "Morning Coffee Meeting",
       "meetingRoom": "Arbanasi",
       "participants": []
+    },
+    {
+      "start": "2021-03-04T11:00:00.000Z",
+      "end": "2021-03-04T12:00:00.000Z",
+      "name": "Conference Call",
+      "meetingRoom": "Arbanasi",
+      "participants": []
+    },
+    {
+      "start": "2021-03-04T10:00:00.000Z",
+      "end": "2021-03-04T10:30:00.000Z",
+      "name": "Morning Coffee Meeting",
+      "meetingRoom": "Arbanasi",
+      "participants": []
+    },
+    {
+      "start": "2021-03-04T10:00:00.000Z",
+      "end": "2021-03-04T10:30:00.000Z",
+      "name": "Afternoon Coffee Meeting",
+      "meetingRoom": "Arbanasi",
+      "participants": []
+    },
+    {
+      "start": "2021-03-10T11:00:00.000Z",
+      "end": "2021-03-10T12:00:00.000Z",
+      "name": "Conference Call",
+      "meetingRoom": "Arbanasi",
+      "participants": []
+    },
+    {
+      "start": "2021-03-10T10:00:00.000Z",
+      "end": "2021-03-10T10:30:00.000Z",
+      "name": "Morning Coffee Meeting",
+      "meetingRoom": "Arbanasi",
+      "participants": []
+    },
+    {
+      "start": "2021-04-10T14:00:00.000Z",
+      "end": "2021-04-10T15:30:00.000Z",
+      "name": "Daily Standup",
+      "meetingRoom": "Tsarevets",
+      "participants": []
     }
   ]
 }
