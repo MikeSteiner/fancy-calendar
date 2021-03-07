@@ -19,10 +19,7 @@ export class CalendarGeneratorService {
     const lastDateInMonth = new Date(year, month, this.monthService.getLastDay(year, month));
     const firstWeekNumber: number = this.weekService.getNumber(firstDateInMonth);
     const lastWeekNumber: number = this.weekService.getNumber(lastDateInMonth);
-
     const weekNumbers: number[] = this.range(firstWeekNumber, lastWeekNumber, 1);
-
-    console.log(weekNumbers);
 
     return weekNumbers;
   }
@@ -62,15 +59,12 @@ export class CalendarGeneratorService {
     const startOfWeekDaysOffset = (-1) * (startIndex);
     let nextDate: Date = this.addDays(date, startOfWeekDaysOffset);
 
-    console.log(nextDate);
     do {
       const newDay: Day = this.generateDay(nextDate);
       dayOfWeekIndex = nextDate.getUTCDay();
       days[dayOfWeekIndex] = newDay;
       nextDate =  this.addDays(nextDate, 1);
     } while (dayOfWeekIndex <= WeekUTCDay.Sunday && days.length < 7);
-
-    console.log(days);
 
     return {
       number: this.weekService.getNumber(date),

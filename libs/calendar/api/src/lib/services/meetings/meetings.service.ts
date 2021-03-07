@@ -31,7 +31,7 @@ export class MeetingsService {
           }
         }
       )),
-      tap((all) => console.log(all)),
+      // tap((all) => console.log(all)),
     );
   }
 
@@ -44,7 +44,7 @@ export class MeetingsService {
           return (meeting.start.getFullYear() === year && meeting.start.getMonth() === month) || (meeting.end.getFullYear() === year && meeting.end.getMonth() === month);
         });
       }),
-      tap((all) => console.log(all)),
+      // tap((all) => console.log(all)),
     );
   }
 }
