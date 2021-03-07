@@ -22,7 +22,10 @@
       ],
       "@fancy-calendar/calendar/features/dashboard": [
         "libs/calendar/features/dashboard/src/index.ts"
-      ]
+      ],
+      "@fancy-calendar/shared/modal": ["libs/shared/modal/src/index.ts"],
+      "@fancy-calendar/calendar/dates": ["libs/calendar/dates/src/index.ts"],
+      "@fancy-calendar/calendar/types": ["libs/calendar/types/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

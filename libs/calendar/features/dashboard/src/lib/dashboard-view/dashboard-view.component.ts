@@ -1,17 +1,16 @@
-import { Component, OnInit } from '@angular/core';
-import {BehaviorSubject, Observable} from "rxjs";
+import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
+import {BehaviorSubject, Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
 
-import {MeetingsService} from "../../../../../api/src/lib/meetings/meetings.service";
-import {WeekService} from "../../../../../api/src/lib/week/week.service";
-import {MonthService} from "../../../../../api/src/lib/month/month.service";
-import {CalendarGeneratorService} from "../../../../../api/src/lib/calendar-generator/calendar-generator.service";
-import {Meeting, Week, WeekUTCDay} from "../../../../../api/src/lib/types/types";
-import {map} from "rxjs/operators";
+import {Meeting, Week, WeekUTCDay} from '@fancy-calendar/calendar/types';
+import {CalendarGeneratorService, MonthService, WeekService} from '@fancy-calendar/calendar/dates';
+import {MeetingsService} from '@fancy-calendar/calendar/api';
 
 @Component({
   selector: 'fancy-dashboard-view',
   templateUrl: './dashboard-view.component.html',
-  styleUrls: ['./dashboard-view.component.scss']
+  styleUrls: ['./dashboard-view.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DashboardViewComponent implements OnInit {
   private _meetings$: BehaviorSubject<Meeting[]> = new BehaviorSubject<Meeting[]>([]);

@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
-import {Observable} from "rxjs";
-import {filter, map, switchMap, tap} from "rxjs/operators";
-import {Meeting} from "../types/types";
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
+import {Observable} from 'rxjs';
+import {map, tap} from 'rxjs/operators';
+
+import {Meeting} from '@fancy-calendar/calendar/types';
 
 @Injectable({
   providedIn: 'root'

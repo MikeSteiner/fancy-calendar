@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-export const MS_IN_ONE_DAY = 86400000;
+import { MS_IN_ONE_DAY } from '../../types';
 
 @Injectable({
   providedIn: 'root'

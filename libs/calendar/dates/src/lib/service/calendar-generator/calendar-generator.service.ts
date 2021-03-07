@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 
+import {Day, Week, WeekUTCDay} from '@fancy-calendar/calendar/types';
+
 import { WeekService } from '../week/week.service';
 import { MonthService } from '../month/month.service';
-import {Day, Week, WeekUTCDay} from '../types/types';
 
 @Injectable({
   providedIn: 'root'

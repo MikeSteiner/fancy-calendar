@@ -6,7 +6,7 @@ import { DayBoxDetailComponent } from './components/day-box-detail/day-box-detai
 import { DayBoxBaseComponent } from './components/day-box-base/day-box-base.component';
 import { RouterModule } from "@angular/router";
 
-import { MeetingsService } from "../../../../api/src/lib/meetings/meetings.service";
+import { MeetingsService } from "../../../../api/src/lib/services/meetings/meetings.service";
 
 @NgModule({
   imports: [

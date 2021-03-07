@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import {YearService} from "../year/year.service";
+import { YearService } from "../year/year.service";
 
 @Injectable({
   providedIn: 'root'

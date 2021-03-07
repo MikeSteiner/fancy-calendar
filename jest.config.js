@@ -10,5 +10,8 @@ module.exports = {
     '<rootDir>/libs/calendar/features/view',
     '<rootDir>/libs/calendar/features/dashboard',
     '<rootDir>/apps/calendar-app',
+    '<rootDir>/libs/shared/modal',
+    '<rootDir>/libs/calendar/dates',
+    '<rootDir>/libs/calendar/types',
   ],
 };

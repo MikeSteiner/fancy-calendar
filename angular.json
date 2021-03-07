@@ -359,6 +359,81 @@
           }
         }
       }
+    },
+    "shared-modal": {
+      "projectType": "library",
+      "root": "libs/shared/modal",
+      "sourceRoot": "libs/shared/modal/src",
+      "prefix": "fancy-calendar",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/shared/modal/src/**/*.ts",
+              "libs/shared/modal/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/shared/modal"],
+          "options": {
+            "jestConfig": "libs/shared/modal/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "calendar-dates": {
+      "projectType": "library",
+      "root": "libs/calendar/dates",
+      "sourceRoot": "libs/calendar/dates/src",
+      "prefix": "fancy-calendar",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/calendar/dates/src/**/*.ts",
+              "libs/calendar/dates/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/calendar/dates"],
+          "options": {
+            "jestConfig": "libs/calendar/dates/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "calendar-types": {
+      "projectType": "library",
+      "root": "libs/calendar/types",
+      "sourceRoot": "libs/calendar/types/src",
+      "prefix": "fancy-calendar",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/calendar/types/src/**/*.ts",
+              "libs/calendar/types/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/calendar/types"],
+          "options": {
+            "jestConfig": "libs/calendar/types/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   }
 }
