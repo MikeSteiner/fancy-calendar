@@ -31,3 +31,12 @@ export enum WeekUTCDay {
   Saturday = 5,
   Sunday = 6,
 }
+
+// Meetings
+export interface Meeting {
+  start: Date;
+  end: Date;
+  name: string;
+  meetingRoom: string;
+  participants: string[];
+}
