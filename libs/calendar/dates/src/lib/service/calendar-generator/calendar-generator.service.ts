@@ -17,8 +17,13 @@ export class CalendarGeneratorService {
     const month: number = date.getMonth();
     const firstDateInMonth = new Date(year, month, this.monthService.getFirstDay());
     const lastDateInMonth = new Date(year, month, this.monthService.getLastDay(year, month));
-    const firstWeekNumber: number = this.weekService.getNumber(firstDateInMonth);
+    let firstWeekNumber: number = this.weekService.getNumber(firstDateInMonth);
     const lastWeekNumber: number = this.weekService.getNumber(lastDateInMonth);
+
+    if(firstWeekNumber > lastWeekNumber) {
+      firstWeekNumber = 0;
+    }
+
     const weekNumbers: number[] = this.range(firstWeekNumber, lastWeekNumber, 1);
 
     return weekNumbers;
@@ -29,6 +34,7 @@ export class CalendarGeneratorService {
     console.log(dateOne);
 
     const weekNumbers: number[] = this.getWeekNumbersInMonth(dateOne);
+    console.log(weekNumbers);
 
     const weeks = [];
     weekNumbers.forEach((n, index) => {
