@@ -434,6 +434,56 @@
           }
         }
       }
+    },
+    "calendar-features-home": {
+      "projectType": "library",
+      "root": "libs/calendar/features/home",
+      "sourceRoot": "libs/calendar/features/home/src",
+      "prefix": "fancy-calendar",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/calendar/features/home/src/**/*.ts",
+              "libs/calendar/features/home/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/calendar/features/home"],
+          "options": {
+            "jestConfig": "libs/calendar/features/home/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "calendar-features-calendar": {
+      "projectType": "library",
+      "root": "libs/calendar/features/calendar",
+      "sourceRoot": "libs/calendar/features/calendar/src",
+      "prefix": "fancy-calendar",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/calendar/features/calendar/src/**/*.ts",
+              "libs/calendar/features/calendar/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/calendar/features/calendar"],
+          "options": {
+            "jestConfig": "libs/calendar/features/calendar/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   }
 }

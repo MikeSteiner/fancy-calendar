@@ -1,8 +1,12 @@
 @each $size in $font-weights {
 	@font-face {
-		@if $size == 300 {
-			font-weight: normal;
-		} @else if $size == 500 {
+		@if $size == 100 {
+			font-weight: 100;
+		} @else if $size == 200 {
+      font-weight: 200;
+    } @else if $size == 300 {
+      font-weight: normal;
+    }@else if $size == 500 {
 			font-weight: 500;
 		} @else if $size == 700 {
 			font-weight: bold;

@@ -1,7 +1,5 @@
 import { ExtraOptions, Routes } from '@angular/router';
 
-import {AppComponent} from "./app.component";
-
 export const APP_ROUTES: Routes = [
   {
     path: '',
@@ -10,11 +8,11 @@ export const APP_ROUTES: Routes = [
   },
   {
     path: 'home',
-    component: AppComponent
+    loadChildren: () => import('@fancy-calendar/calendar/features/dashboard').then((m) => m.CalendarFeaturesDashboardModule)
   },
   {
     path: 'calendar',
-    loadChildren: () => import('@fancy-calendar/calendar/features/dashboard').then((m) => m.CalendarFeaturesDashboardModule)
+    loadChildren: () => import('@fancy-calendar/calendar/features/calendar').then((m) => m.CalendarFeaturesCalendarModule)
   },
   {
     path: '**',

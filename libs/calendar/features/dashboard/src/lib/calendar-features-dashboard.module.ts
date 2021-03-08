@@ -21,6 +21,6 @@ import { DayDetailComponent } from './components/day-detail/day-detail.component
     SharedModalModule,
   ],
   declarations: [DashboardViewComponent, TimeNavigationComponent, DayDetailComponent, ],
-  providers: [MeetingsService],
+  providers: [],
 })
 export class CalendarFeaturesDashboardModule {}

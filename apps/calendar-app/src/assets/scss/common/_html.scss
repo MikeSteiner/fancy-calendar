@@ -9,6 +9,7 @@ body {
   font-display: swap;
   vertical-align: baseline;
   margin: 0;
+  background-color: $gray-200;
 }
 
 header {
@@ -19,7 +20,7 @@ header {
 }
 
 main {
-  padding: 3rem 1rem;
+  padding: 2rem 1rem 0rem 1rem;
 }
 
 h1 {

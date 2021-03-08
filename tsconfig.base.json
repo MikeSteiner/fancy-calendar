@@ -23,7 +23,13 @@
       "@fancy-calendar/calendar/dates": ["libs/calendar/dates/src/index.ts"],
       "@fancy-calendar/calendar/types": ["libs/calendar/types/src/index.ts"],
       "@fancy-calendar/shared/theme": ["libs/shared/theme/src/index.ts"],
-      "@fancy-calendar/shared/view": ["libs/shared/view/src/index.ts"]
+      "@fancy-calendar/shared/view": ["libs/shared/view/src/index.ts"],
+      "@fancy-calendar/calendar/features/home": [
+        "libs/calendar/features/home/src/index.ts"
+      ],
+      "@fancy-calendar/calendar/features/calendar": [
+        "libs/calendar/features/calendar/src/index.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]
