@@ -1,0 +1,22 @@
+@import "./apps/calendar-app/src/assets/scss/common/variables";
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 3rem;
+
+  ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    list-style-type: none;
+  }
+
+  a {
+    display: inline-block;
+    width: 8rem;
+    color: $white;
+  }
+}

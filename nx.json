@@ -23,7 +23,7 @@
   "projects": {
     "main-app": { "tags": [] },
     "main-app-e2e": { "tags": [], "implicitDependencies": ["main-app"] },
-    "calendar-app": { "tags": ["scope:calendar-app"] },
+    "calendar-app": { "tags": ["scope:calendar-app", "scope:shared"] },
     "calendar-app-e2e": {
       "tags": [],
       "implicitDependencies": ["calendar-app"]
@@ -31,10 +31,9 @@
     "calendar-api": { "tags": ["scope:calendar"] },
     "calendar-dates": { "tags": ["scope:calendar"] },
     "calendar-types": { "tags": ["scope:calendar"] },
-    "calendar-features-view": { "tags": ["scope:calendar"] },
     "calendar-features-dashboard": { "tags": ["scope:calendar"] },
-    "shared-api": { "tags": ["scope:shared"] },
     "shared-modal": { "tags": ["scope:shared"] },
-    "shared-theme": { "tags": ["scope:shared"] }
+    "shared-theme": { "tags": ["scope:shared"] },
+    "shared-view": { "tags": ["scope:shared"] }
   }
 }

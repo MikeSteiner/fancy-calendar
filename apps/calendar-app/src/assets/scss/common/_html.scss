@@ -1,6 +1,25 @@
 html {
 	font-size: $default-font-size;
+  font-family: $font-family-base;
 	line-height: 1.56;
+}
+
+body {
+  font-size: $default-font-size;
+  font-display: swap;
+  vertical-align: baseline;
+  margin: 0;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  background-color: $green;
+  color: white;
+}
+
+main {
+  padding: 3rem 1rem;
 }
 
 h1 {
@@ -82,15 +101,19 @@ textarea {
 	}
 }
 
-body {
-	font-size: $default-font-size;
-	font-display: swap;
-	vertical-align: baseline;
-}
-
 // https://stackoverflow.com/a/34372979 also works with display flex
 hr {
 	margin: $hr-margin-y 0;
 	border: 0;
 	border-top: $hr-width solid $hr-color;
+}
+
+ul {
+  display: block;
+  list-style-type: none;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+  padding-inline-start: 0;
 }

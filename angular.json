@@ -171,56 +171,6 @@
         }
       }
     },
-    "shared-api": {
-      "projectType": "library",
-      "root": "libs/shared/api",
-      "sourceRoot": "libs/shared/api/src",
-      "prefix": "fancy-calendar",
-      "architect": {
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/shared/api/src/**/*.ts",
-              "libs/shared/api/src/**/*.html"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/shared/api"],
-          "options": {
-            "jestConfig": "libs/shared/api/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      }
-    },
-    "calendar-features-view": {
-      "projectType": "library",
-      "root": "libs/calendar/features/view",
-      "sourceRoot": "libs/calendar/features/view/src",
-      "prefix": "fancy-calendar",
-      "architect": {
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/calendar/features/view/src/**/*.ts",
-              "libs/calendar/features/view/src/**/*.html"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/calendar/features/view"],
-          "options": {
-            "jestConfig": "libs/calendar/features/view/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      }
-    },
     "calendar-features-dashboard": {
       "projectType": "library",
       "root": "libs/calendar/features/dashboard",
@@ -455,6 +405,31 @@
           "outputs": ["coverage/libs/shared/theme"],
           "options": {
             "jestConfig": "libs/shared/theme/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "shared-view": {
+      "projectType": "library",
+      "root": "libs/shared/view",
+      "sourceRoot": "libs/shared/view/src",
+      "prefix": "fancy-calendar",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/shared/view/src/**/*.ts",
+              "libs/shared/view/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/shared/view"],
+          "options": {
+            "jestConfig": "libs/shared/view/jest.config.js",
             "passWithNoTests": true
           }
         }

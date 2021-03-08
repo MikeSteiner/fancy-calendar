@@ -26,6 +26,7 @@ Use the following JSON to get the data from
 As a design insiration and ideas is used the 
 [fullcalendar](https://fullcalendar.io/demos)
 demo project
+[Full Calendar](https://demos.creative-tim.com/fullcalendar/fullcalendar.html?_ga=2.16838073.1265336677.1615199619-822555436.1615199619)
 
 ## Technologies
 - [Angular](https://angular.io)

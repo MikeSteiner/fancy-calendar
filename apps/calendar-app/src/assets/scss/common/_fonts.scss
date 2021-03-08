@@ -12,18 +12,13 @@
 			font-weight: 900;
 		}
 
-		font-family: 'MuseoSansW05';
-
+		//font-family: 'MuseoSansW05';
+		font-family: $font-family-base;
 	}
+
 	.font-weight-#{$size} {
 		font-weight: $size !important;
 	}
-}
-
-body {
-	font-size: $default-font-size;
-	font-display: swap;
-	vertical-align: baseline;
 }
 
 @each $size in $font-sizes {
@@ -33,11 +28,4 @@ body {
 			font-weight: $weight !important;
 		}
 	}
-}
-
-// https://stackoverflow.com/a/34372979 also works with display flex
-hr {
-	margin: $hr-margin-y 0;
-	border: 0;
-	border-top: $hr-width solid $hr-color;
 }

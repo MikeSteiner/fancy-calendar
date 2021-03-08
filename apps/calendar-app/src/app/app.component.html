@@ -1,16 +1,5 @@
-<header class="flex">
-  <h1>Welcome to {{ title }}!</h1>
-  <nav>
-    <ul>
-      <li>
-        <a [routerLink]="['home']">Home</a>
-      </li>
-      <li>
-        <a [routerLink]="['/calendar']">Calendar</a>
-      </li>
-    </ul>
-  </nav>
-
+<header>
+  <fancy-calendar-app-header></fancy-calendar-app-header>
 </header>
 <main>
   <router-outlet></router-outlet>

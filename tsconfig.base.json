@@ -16,17 +16,14 @@
     "baseUrl": ".",
     "paths": {
       "@fancy-calendar/calendar/api": ["libs/calendar/api/src/index.ts"],
-      "@fancy-calendar/shared/api": ["libs/shared/api/src/index.ts"],
-      "@fancy-calendar/calendar/features/view": [
-        "libs/calendar/features/view/src/index.ts"
-      ],
       "@fancy-calendar/calendar/features/dashboard": [
         "libs/calendar/features/dashboard/src/index.ts"
       ],
       "@fancy-calendar/shared/modal": ["libs/shared/modal/src/index.ts"],
       "@fancy-calendar/calendar/dates": ["libs/calendar/dates/src/index.ts"],
       "@fancy-calendar/calendar/types": ["libs/calendar/types/src/index.ts"],
-      "@fancy-calendar/shared/theme": ["libs/shared/theme/src/index.ts"]
+      "@fancy-calendar/shared/theme": ["libs/shared/theme/src/index.ts"],
+      "@fancy-calendar/shared/view": ["libs/shared/view/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
