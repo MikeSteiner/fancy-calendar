@@ -1,0 +1,43 @@
+$month-item-size: 2.625rem;
+
+.month-picker {
+	padding: 0.938rem;
+
+	hr {
+		border-color: $dark-grey;
+		margin: 0.75rem 0 0.5rem 0;
+	}
+
+	.month-picker-item {
+		min-width: $month-item-size;
+		width: $month-item-size;
+		height: $month-item-size;
+		color: $dark-grey;
+		border-radius: 100%;
+		cursor: pointer;
+		text-transform: uppercase;
+		margin: 0.095rem 0.655rem;
+
+		&:first-child {
+			margin-left: 0;
+		}
+
+		&:last-child {
+			margin-right: 0;
+		}
+
+		&:hover:not(.selected):not(.disabled) {
+			background-color: $gray-50;
+		}
+
+		&.selected {
+			background-color: $primary;
+			color: $white;
+		}
+
+		&.disabled {
+			pointer-events: none;
+			color: $gray-100;
+		}
+	}
+}

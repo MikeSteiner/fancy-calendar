@@ -76,6 +76,7 @@ export class CalendarGeneratorService {
     return Array.from({ length: (stop - start) / step + 1}, (_, i) => start + (i * step));
   }
 
+  // Todo add to the Date.prototype
   addDays(date: Date, days: number): Date {
     let newDate: Date = new Date(date);
     newDate.setDate(newDate.getDate() + days);

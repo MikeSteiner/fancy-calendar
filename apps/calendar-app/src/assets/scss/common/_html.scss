@@ -1,0 +1,96 @@
+html {
+	font-size: $default-font-size;
+	line-height: 1.56;
+}
+
+h1 {
+	font-size: $h1-size;
+	line-height: $h1-line-height;
+}
+
+h2 {
+	font-size: $h2-size;
+	line-height: $h2-line-height;
+	margin: 1.75rem 0;
+}
+
+h3 {
+	font-size: $h3-size;
+	line-height: $h3-line-height;
+	margin: 1.25rem 0;
+}
+
+h4 {
+	font-size: $h4-size;
+	line-height: $h4-line-height;
+}
+
+h5 {
+	font-size: $h5-size;
+	line-height: $h5-line-height;
+	margin: 0.875rem 0;
+}
+
+h6 {
+	font-size: 0.75rem;
+	line-height: $h6-line-height;
+	margin: 0.875rem 0;
+}
+
+small {
+	font-size: 0.75rem;
+	line-height: 1.2;
+
+	&.disabled {
+		color: $gray-300;
+	}
+
+	&.bold {
+		font-weight: bold;
+	}
+
+	&.w-500 {
+		font-weight: 500;
+	}
+}
+
+a {
+	color: $link-color;
+	text-decoration: none;
+	font-weight: 500;
+
+	&.underline {
+		text-decoration: underline;
+	}
+
+	&:hover {
+		color: $primary-85;
+
+		svg {
+			--color-1: #{$primary-85};
+			--color-2: #{$primary-85};
+		}
+	}
+}
+
+textarea {
+	&.json {
+		line-height: 1.375rem;
+		font-family: 'Courier New', Courier, monospace;
+		color: $white;
+		background-color: $dark-grey;
+	}
+}
+
+body {
+	font-size: $default-font-size;
+	font-display: swap;
+	vertical-align: baseline;
+}
+
+// https://stackoverflow.com/a/34372979 also works with display flex
+hr {
+	margin: $hr-margin-y 0;
+	border: 0;
+	border-top: $hr-width solid $hr-color;
+}

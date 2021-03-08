@@ -34,6 +34,7 @@
     "calendar-features-view": { "tags": ["scope:calendar"] },
     "calendar-features-dashboard": { "tags": ["scope:calendar"] },
     "shared-api": { "tags": ["scope:shared"] },
-    "shared-modal": { "tags": ["scope:shared"] }
+    "shared-modal": { "tags": ["scope:shared"] },
+    "shared-theme": { "tags": ["scope:shared"] }
   }
 }

@@ -1,0 +1,93 @@
+$card-box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.1) !default;
+$card-box-shadow-active: 0 3px 6px 0 rgba(0, 0, 0, 0.16) !default;
+$card-border: 1px solid $gray-100 !default;
+$card-border-radius: 3px !default;
+$card-padding: 1rem !default;
+$card-background-color: transparent !default;
+$card-animation: 0.2s ease-in !default;
+$card-disabled-color: $gray-300;
+
+$card-error-y-padding: 1rem !default;
+$card-error-x-padding: 1.5rem !default;
+$card-error-background-color: $error-light-red !default;
+$card-error-color: $error-red !default;
+
+$card-specification-value-font-size: 0.875rem !default;
+$card-specification-value-font-weight-bold: bold !default;
+$card-specification-label-font-size: 0.625rem !default;
+$card-specification-label-font-weight-medium: 500 !default;
+$card-specification-label-color: $brown-grey !default;
+
+.card {
+	border: $card-border;
+	border-radius: $card-border-radius;
+	padding: $card-padding;
+	background-color: $card-background-color;
+
+	&-48 {
+		@extend .card;
+		height: 3rem;
+	}
+
+	&-56 {
+		@extend .card;
+		height: 3.5rem;
+	}
+
+	&.card-error {
+		color: $card-error-color;
+		background-color: $card-error-background-color;
+		padding: $card-error-y-padding $card-error-x-padding;
+		border: none;
+		border-radius: 0;
+	}
+
+	&.hoverable:not(.disabled) {
+		transition: box-shadow $card-animation, border-color $card-animation;
+		cursor: pointer;
+
+		&:hover {
+			box-shadow: $card-box-shadow;
+		}
+	}
+
+	&.active {
+		border-color: $primary;
+	}
+
+	&.disabled {
+		pointer-events: none;
+		color: $card-disabled-color;
+		fill: $card-disabled-color;
+	}
+
+	&.non-clickable {
+		pointer-events: none;
+	}
+
+	.specification {
+		display: flex;
+		flex-direction: column;
+
+		max-width: 100%;
+		max-height: 100%;
+
+		&-val {
+			font-size: $card-specification-value-font-size;
+			font-weight: $card-specification-value-font-weight-bold;
+
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+		}
+
+		&-label {
+			font-size: $card-specification-label-font-size;
+			font-weight: $card-specification-label-font-weight-medium;
+			color: $card-specification-label-color;
+			margin-bottom: 0;
+			margin-top: auto;
+			text-transform: uppercase;
+		}
+	}
+}

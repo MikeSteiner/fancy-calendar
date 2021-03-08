@@ -1,0 +1,43 @@
+@each $size in $font-weights {
+	@font-face {
+		@if $size == 300 {
+			font-weight: normal;
+		} @else if $size == 500 {
+			font-weight: 500;
+		} @else if $size == 700 {
+			font-weight: bold;
+		} @else if $size == 800 {
+			font-weight: bold;
+		} @else if $size == 900 {
+			font-weight: 900;
+		}
+
+		font-family: 'MuseoSansW05';
+
+	}
+	.font-weight-#{$size} {
+		font-weight: $size !important;
+	}
+}
+
+body {
+	font-size: $default-font-size;
+	font-display: swap;
+	vertical-align: baseline;
+}
+
+@each $size in $font-sizes {
+	@each $weight in $font-weights {
+		.font-#{($size / 1px)}-#{$weight} {
+			font-size: ($size / $default-font-size) * 1rem !important;
+			font-weight: $weight !important;
+		}
+	}
+}
+
+// https://stackoverflow.com/a/34372979 also works with display flex
+hr {
+	margin: $hr-margin-y 0;
+	border: 0;
+	border-top: $hr-width solid $hr-color;
+}

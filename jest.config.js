@@ -13,5 +13,6 @@ module.exports = {
     '<rootDir>/libs/shared/modal',
     '<rootDir>/libs/calendar/dates',
     '<rootDir>/libs/calendar/types',
+    '<rootDir>/libs/shared/theme',
   ],
 };

@@ -1,0 +1,109 @@
+/*
+This is the scss resource holding the style/theme project composition
+Fancy Calendar App styles
+*/
+
+// Colors
+$petrol: #045462;
+$petrol-500: #81a9b0;
+$petrol-soft: #e5edef;
+$petrol-light: #dbe7e9;
+$petrol-85: mix($petrol, white, 85);
+
+$sunny-yellow: #f8ec17;
+$white: #ffffff;
+$black: #000000;
+$dark-grey: #424242;
+$brown-grey: #8d8d8d;
+$mid-grey: #b1b1b1;
+$ultralight-grey: #f4f4f4;
+$error-red: #f44336;
+$error-light-red: #fdebe9;
+$reddish-orange: #ea5310;
+$confirm-green: #4ab54f;
+$confirm-light-green: #ecf8ed;
+
+$primary: $petrol !default;
+$primary-85: mix($primary, white, 85);
+$primary-soft: $petrol-soft !default;
+$primary-15: #d9e5e7 !default;
+$secondary: $sunny-yellow !default;
+
+$blue: #007bff;
+$indigo: #6610f2;
+$purple: #6f42c1;
+$pink: #e83e8c;
+$red: $error-red;
+$orange: #fd7e14;
+$yellow: #ffd31a;
+$green: $confirm-green;
+$teal: #20c997;
+$cyan: #17a2b8;
+$white: #fff;
+$fully-transparent: #ffffff00;
+
+$gray-20: #f9f9f9;
+$gray-50: #f4f4f4;
+$gray-75: #f4f8f8;
+$gray-100: #ebebeb;
+$gray-200: #d8d8d8;
+$gray-300: #c6c6c6;
+$gray-400: #b2b2b2;
+$gray-500: #a0a0a0;
+$gray-600: #8d8d8d;
+$gray-700: #7a7a7a;
+$gray-800: #676767;
+$gray-900: #545454;
+$gray: $dark-grey;
+$black: #000;
+
+$ultralight-grey: $gray-20;
+$lightgrey: $gray-50;
+$grey: $gray-200;
+$mid-grey: $gray-600;
+
+$text-color: $dark-grey;
+$darkgrey: #424242;
+
+// Fonts
+$font-family-sans-serif: 'MuseoSansW05', Helvetica, Arial, sans-serif !default;
+$font-family-monospace: 'OCRAStd', monospace !default;
+$font-family-base: $font-family-sans-serif !default;
+
+$font-size-base: 1rem !default;
+$font-size-lg: 1.25rem !default;
+$font-size-sm: 0.875rem !default;
+
+$font-weight-lighter: lighter !default;
+$font-weight-light: 300 !default;
+$font-weight-normal: 400 !default;
+$font-weight-bold: 700 !default;
+$font-weight-bolder: bolder !default;
+
+$default-font-size: 16px !default;
+$font-sizes: 8px, 10px, 12px, 14px, 16px, 18px, 20px, 24px, 40px !default;
+$font-weights: 300, 500, 700, 900 !default;
+
+$link-color: $primary !default;
+
+$hr-width: 1px !default;
+$hr-margin-y: 1rem !default;
+$hr-color: $gray-100 !default;
+
+$h-line-height: 1.5;
+$h1-size: 2.125rem !default;
+$h1-line-height: $h-line-height !default;
+$h2-size: 1.42rem !default;
+$h2-line-height: $h-line-height !default;
+$h3-size: 1.25rem !default;
+$h3-line-height: $h-line-height !default;
+$h4-size: 1rem !default;
+$h4-line-height: $h-line-height !default;
+$h5-size: 0.875rem !default;
+$h5-line-height: $h-line-height !default;
+$h6-size: 0.75rem !default;
+$h6-line-height: $h-line-height !default;
+
+$line-height-base: 1.56;
+
+$font-weight-bolder: bold;

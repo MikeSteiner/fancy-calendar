@@ -1,0 +1,142 @@
+$button-padding-x: 1rem !default;
+$button-padding-y: 0.5rem !default;
+$button-font-size: 0.875rem !default;
+$button-font-weight: 500 !default;
+$button-border-radius: 0.1875rem !default;
+$button-background-color: $lightgrey !default;
+$button-line-height: 1rem !default;
+$button-color: $text-color !default;
+$button-hover-darkening: 3% !default;
+$button-border-width: 0.0625rem !default;
+$button-animation: 50ms ease-in !default;
+
+$button-variations: (
+	primary: (
+		$primary,
+		$white,
+		darken($primary, $button-hover-darkening),
+		$gray-50,
+	),
+	secondary: (
+		$secondary,
+		$primary,
+		darken($secondary, 5%),
+		$gray-50,
+	),
+	dark: (
+		$dark-grey,
+		$white,
+		darken($dark-grey, 5%),
+		$gray-50,
+	),
+	plain: (
+		transparent,
+		$dark-grey,
+		transparent,
+		transparent,
+	),
+	plain-primary: (
+		transparent,
+		$primary,
+		$button-background-color,
+		transparent,
+	),
+) !default;
+
+$button-outline-variations: (
+	primary: (
+		$primary,
+		$primary,
+	),
+) !default;
+
+@mixin button-text-color($color) {
+	color: $color;
+
+	svg {
+		--color-1: #{$color};
+		--color-2: #{$color};
+	}
+}
+
+.btn {
+	border: none;
+	transition: background-color $button-animation, border $button-animation,
+		color $button-animation;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	vertical-align: middle;
+	padding: $button-padding-y $button-padding-x;
+	font-size: $button-font-size;
+	font-weight: $button-font-weight;
+	background-color: $button-background-color;
+	border-radius: $button-border-radius;
+	line-height: $button-line-height;
+
+	@include button-text-color($button-color);
+
+	&::before {
+		content: ' ';
+		transition: all 200ms;
+		width: 0;
+		height: 0;
+		background-size: 0 1rem;
+	}
+
+	&:hover {
+		cursor: pointer;
+		background-color: darken($button-background-color, $button-hover-darkening);
+		@include button-text-color($button-color);
+	}
+
+	&:disabled {
+		background-color: $gray-50;
+		@include button-text-color($gray-300);
+		cursor: default;
+	}
+
+	@each $name, $colors in $button-variations {
+		&.#{$name} {
+			@include button-text-color(nth($colors, 2));
+
+			$bg: nth($colors, 1);
+			background-color: $bg;
+
+			&:hover {
+				background-color: nth($colors, 3);
+				@include button-text-color(nth($colors, 2));
+			}
+
+			&:disabled {
+				background-color: nth($colors, 4);
+				@include button-text-color($gray-300);
+				cursor: default;
+			}
+		}
+	}
+
+	@each $name, $colors in $button-outline-variations {
+		&.outline-#{$name} {
+			$color: nth($colors, 1);
+			background-color: white;
+			border: $button-border-width solid $color;
+			padding: ($button-padding-y - $button-border-width)
+				($button-padding-x - $button-border-width);
+			@include button-text-color($color);
+
+			&:hover {
+				background-color: nth($colors, 2);
+				@include button-text-color(white);
+			}
+
+			&:disabled {
+				border-color: $gray-100;
+				background-color: $white;
+				@include button-text-color($gray-300);
+				cursor: default;
+			}
+		}
+	}
+}
