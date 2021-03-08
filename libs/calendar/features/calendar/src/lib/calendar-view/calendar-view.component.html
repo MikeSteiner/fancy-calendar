@@ -13,7 +13,7 @@
     <fancy-calendar-calendar-month-navigation
       (prev)="onPreviousMonthClick()"
       (next)="onNextMonthClick()"
-      (today)="onNextMonthClick()"
+      (today)="onTodayClick()"
     ></fancy-calendar-calendar-month-navigation>
   </div>
 <!--  <div class="fc-workdays">-->
@@ -27,15 +27,31 @@
 <!--  </div>-->
   <fancy-calendar-calendar-days-of-week [locale]="locale"></fancy-calendar-calendar-days-of-week>
   <div class="fc-month-container">
-    <ng-container *ngFor="let day of days">
-      <div class="fc-day">
-        <div
-          class="fc-day-number"
-          [class.fc-is-today]="day.isToday"
-          [class.fc-is-weekend]="day.isWeekend"
-        >{{ day.number }}</div>
-        <div *ngFor="let event of day.events" class="fc-day-event important">{{ event }}</div>
-      </div>
+    <ng-container *ngFor="let week of weeksInMonth">
+      <ng-container *ngFor="let day of week.days">
+
+        <div class="fc-day">
+          <div
+            class="fc-day-number"
+            [class.fc-is-today]="day.isToday"
+            [class.fc-is-weekend]="day.isWeekend"
+          >{{ day.number }}</div>
+          <!--        <div *ngFor="let event of day.events" class="fc-day-event important">{{ event }}</div>-->
+        </div>
+
+      </ng-container>
     </ng-container>
+<!--    <ng-container *ngFor="let day of days">-->
+<!--      <div class="fc-day">-->
+<!--        <div-->
+<!--          class="fc-day-number"-->
+<!--          [class.fc-is-today]="day.isToday"-->
+<!--          [class.fc-is-weekend]="day.isWeekend"-->
+<!--        >{{ day.number }}</div>-->
+<!--&lt;!&ndash;        <div *ngFor="let event of day.events" class="fc-day-event important">{{ event }}</div>&ndash;&gt;-->
+<!--      </div>-->
+<!--    </ng-container>-->
   </div>
 </div>
+
+{{ monthlyEvents$ | async | json }}

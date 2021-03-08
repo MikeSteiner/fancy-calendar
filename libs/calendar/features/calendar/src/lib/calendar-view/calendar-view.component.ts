@@ -1,11 +1,12 @@
 import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {BehaviorSubject, Observable} from "rxjs";
 
-import {Day, Meeting, Week} from "@fancy-calendar/calendar/types";
-import {CalendarGeneratorService, MonthService, WeekService} from "@fancy-calendar/calendar/dates";
-import {MeetingsService} from "@fancy-calendar/calendar/api";
-import {ModalService} from "@fancy-calendar/shared/modal";
-import {LocaleService} from "../../../../../dates/src/lib/service/locale";
+import {Day, Meeting, Week} from '@fancy-calendar/calendar/types';
+import {CalendarGeneratorService, MonthService, WeekService} from '@fancy-calendar/calendar/dates';
+import {MeetingsService} from '@fancy-calendar/calendar/api';
+import {ModalService} from '@fancy-calendar/shared/modal';
+import {LocaleService} from '@fancy-calendar/calendar/dates';
+import { EventsStateService } from "../+state/events-state.service";
 
 @Component({
   selector: 'fancy-calendar-calendar-view',
@@ -14,11 +15,7 @@ import {LocaleService} from "../../../../../dates/src/lib/service/locale";
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CalendarViewComponent implements OnInit {
-  private _meetings$: BehaviorSubject<Meeting[]> = new BehaviorSubject<Meeting[]>([]);
-
-  get meetings$(): Observable<Meeting[]> {
-    return this._meetings$.asObservable()
-  };
+  monthlyEvents$: Observable<Meeting[]> = this.eventsState.events$;
 
   private get year(): number {
     return this.displayDate.getFullYear();
@@ -28,8 +25,20 @@ export class CalendarViewComponent implements OnInit {
     return this.displayDate.getMonth();
   }
 
+  private get prevMonth(): number {
+    const monthIndex = this.month;
+    if(monthIndex === 0) {
+      return 11;
+    }
+    return this.month - 1;
+  }
+
   private get daysInMonthCount(): number {
     return this.monthService.countDays(this.year, this.month);
+  }
+
+  private get daysInPrevMonthCount(): number {
+    return this.monthService.countDays(this.year, this.prevMonth);
   }
 
   locale = 'en-US';
@@ -48,6 +57,7 @@ export class CalendarViewComponent implements OnInit {
     private monthService: MonthService,
     private calendarGeneratorService: CalendarGeneratorService,
     private meetingsService: MeetingsService,
+    private eventsState: EventsStateService,
     private modalService: ModalService,
     private localeService: LocaleService,
   ) {
@@ -56,24 +66,30 @@ export class CalendarViewComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.eventsState.loadMonthlyEvents(this.year, this.month);
+    this.loadWeeksPerMonth();
   }
 
   onPreviousMonthClick(): void {
-    this.displayDate = this.calendarGeneratorService.addDays(this.displayDate, (-1) * this.daysInMonthCount);
-    // this.loadMeetingsPerMonth();
-    // this.loadWeeksPerMonth();
+    this.displayDate = this.calendarGeneratorService.addDays(this.displayDate, (-1) * this.daysInPrevMonthCount);
+    this.eventsState.loadMonthlyEvents(this.year, this.month);
+    this.loadWeeksPerMonth();
   }
 
   onNextMonthClick(): void {
     this.displayDate = this.calendarGeneratorService.addDays(this.displayDate, this.daysInMonthCount);
-    // this.loadMeetingsPerMonth();
-    // this.loadWeeksPerMonth();
+    this.eventsState.loadMonthlyEvents(this.year, this.month);
+    this.loadWeeksPerMonth();
   }
 
   onTodayClick(): void {
     this.displayDate = new Date();
-    // this.loadMeetingsPerMonth();
-    // this.loadWeeksPerMonth();
+    this.eventsState.loadMonthlyEvents(this.year, this.month);
+    this.loadWeeksPerMonth();
+  }
+
+  private loadWeeksPerMonth(): void {
+    this.weeksInMonth = this.calendarGeneratorService.getWeeksInMonth(this.year, this.month);
   }
 
   private makeFakeDays(): void {
