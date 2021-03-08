@@ -9,6 +9,7 @@ import { CalendarViewComponent } from './calendar-view/calendar-view.component';
 import { CalendarTitleComponent } from './components/calendar-title/calendar-title.component';
 import { CalendarMonthNavigationComponent } from './components/calendar-month-navigation/calendar-month-navigation.component';
 import { CalendarDaysOfWeekComponent } from './components/calendar-days-of-week/calendar-days-of-week.component';
+import { CalendarDayComponent } from './components/calendar-day/calendar-day.component';
 
 @NgModule({
   imports: [
@@ -21,7 +22,7 @@ import { CalendarDaysOfWeekComponent } from './components/calendar-days-of-week/
     ]),
     SharedModalModule,
   ],
-  declarations: [CalendarViewComponent, CalendarTitleComponent, CalendarMonthNavigationComponent, CalendarDaysOfWeekComponent],
+  declarations: [CalendarViewComponent, CalendarTitleComponent, CalendarMonthNavigationComponent, CalendarDaysOfWeekComponent, CalendarDayComponent],
   providers: [EventsStateService],
 })
 export class CalendarFeaturesCalendarModule {}

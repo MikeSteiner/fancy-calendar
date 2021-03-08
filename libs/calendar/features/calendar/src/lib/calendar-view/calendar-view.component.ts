@@ -61,7 +61,7 @@ export class CalendarViewComponent implements OnInit {
     private modalService: ModalService,
     private localeService: LocaleService,
   ) {
-    this.locale = this.localeService.getBrowserLanguage();
+    // this.locale = this.localeService.getBrowserLanguage();
     this.makeFakeDays();
   }
 
@@ -88,6 +88,9 @@ export class CalendarViewComponent implements OnInit {
     this.loadWeeksPerMonth();
   }
 
+  getDayEvents(dayNumber: number): Observable<Meeting[]> {
+    return  this.eventsState.getDailyEvents(dayNumber);
+  }
   private loadWeeksPerMonth(): void {
     this.weeksInMonth = this.calendarGeneratorService.getWeeksInMonth(this.year, this.month);
   }

@@ -24,10 +24,10 @@ export class EventsStateService {
     );
   }
 
-  getDailyEvents(day: number): Observable<Meeting[]> {
+  getDailyEvents(dayNumber: number): Observable<Meeting[]> {
     return this.events$.pipe(
       map((events: Meeting[]) => events.filter((event) => {
-        const isInCurrentDay: boolean = event.start.getDate() === day;
+        const isInCurrentDay: boolean = event.start.getDate() === dayNumber;
         return isInCurrentDay;
       }))
     )

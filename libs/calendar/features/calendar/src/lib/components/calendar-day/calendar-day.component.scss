@@ -1,0 +1,61 @@
+@import "./apps/calendar-app/src/assets/scss/common/variables";
+
+.fc-day {
+  display: flex;
+  flex-direction: column;
+
+  min-width: 7.5rem;
+  min-height:6.7rem;
+
+  //background-color: darkgrey;
+  background-color: $white;
+
+  &-number {
+    align-self: flex-end;
+
+    min-width: 1.5rem;
+    font-size: 16px;
+    text-align: center;
+    color: $white;
+    background-color: $green;
+
+    &-highlight {
+      background-color: #ff3b30;
+      color: #FFFFFF;
+      border-radius: 50%;
+    }
+  }
+
+  &-event {
+    overflow: auto;
+    border: 1px solid $white;
+    background-color: lightgrey;
+    color: $gray-700;
+    max-width: 7.852rem;
+    overflow: hidden;
+    line-height: 1rem;
+
+    span {
+      white-space: nowrap;
+    }
+  }
+
+  .info {
+    background-color: #c6ebfe;
+  }
+
+  .important {
+    background-color: #FFBEBE;
+  }
+}
+
+.fc-is-today {
+  color: $white;
+  background-color: #ff3b30;
+}
+
+// Todo extract to general pace and reuse
+.fc-is-weekend {
+  color: $gray-700;
+  background-color: $sunny-yellow;
+}

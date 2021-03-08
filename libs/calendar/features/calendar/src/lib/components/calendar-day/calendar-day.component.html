@@ -1,0 +1,15 @@
+<div class="fc-day">
+  <div
+    class="fc-day-number"
+    [class.fc-is-today]="day.isToday"
+    [class.fc-is-weekend]="day.isWeekend"
+  >{{ day.number }}</div>
+
+  <div
+    *ngFor="let event of (events$ | async)"
+    class="fc-day-event important"
+  >
+    <span class="font-10-300">{{ event.start | date: 'shortTime' : null : locale }};</span>
+    <span class="font-10-300">{{ event.name }}</span>
+  </div>
+</div>
