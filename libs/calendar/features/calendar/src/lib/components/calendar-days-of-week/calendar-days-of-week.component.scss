@@ -1,0 +1,21 @@
+.fc-workdays {
+  $col: 1fr;
+  display: grid;
+  grid-template-columns: $col $col $col $col $col $col $col;
+  grid-gap: 2px;
+
+  background-color: #f7f7f7;
+
+  span {
+    line-height: 30px;
+    text-align: center;
+
+    border-color: #e83e8c;
+    border-bottom-width: 1px;
+    border-right-width: 1px;
+  }
+}
+
+.fc-is-weekend {
+  color: #b8b8b8;
+}

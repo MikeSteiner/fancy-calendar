@@ -1,5 +1,6 @@
 @import "./apps/calendar-app/src/assets/scss/common/variables";
 
+// Todo fix box shadow
 .fc-container {
   width: 900px;
   margin: 0 auto;
@@ -14,39 +15,39 @@
   justify-content: space-between;
   align-items: center;
 
-  h2 {
-    white-space: nowrap;
-    margin: 1rem 0;
-    margin-left: 2rem;
-  }
+  //h2 {
+  //  white-space: nowrap;
+  //  margin: 1rem 0;
+  //  margin-left: 2rem;
+  //}
 
-  .month-navigation {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    margin-right: 2rem;
-  }
+  //.month-navigation {
+  //  display: flex;
+  //  flex-direction: row;
+  //  justify-content: space-between;
+  //  align-items: center;
+  //  margin-right: 2rem;
+  //}
 }
 
-.fc-workdays {
-  $col-width: 1fr;
-  display: grid;
-  grid-template-columns: $col-width $col-width $col-width $col-width $col-width $col-width $col-width;
-  grid-gap: 2px;
-
-  background-color: #f7f7f7;
-
-  span {
-    line-height: 30px;
-    text-align: center;
-
-    //border-color: #cdcdcd;
-    border-color: #e83e8c;
-    border-bottom-width: 1px;
-    border-right-width: 1px;
-  }
-}
+//.fc-workdays {
+//  $col-width: 1fr;
+//  display: grid;
+//  grid-template-columns: $col-width $col-width $col-width $col-width $col-width $col-width $col-width;
+//  grid-gap: 2px;
+//
+//  background-color: #f7f7f7;
+//
+//  span {
+//    line-height: 30px;
+//    text-align: center;
+//
+//    //border-color: #cdcdcd;
+//    border-color: #e83e8c;
+//    border-bottom-width: 1px;
+//    border-right-width: 1px;
+//  }
+//}
 
 .fc-month-container {
   $col-width: 1fr;
@@ -105,6 +106,7 @@
   background-color: #ff3b30;
 }
 
+// Todo extract to general pace and reuse
 .fc-is-weekend {
   color: #b8b8b8;
 }

@@ -1,21 +1,31 @@
 <div class="fc-container">
   <div class="fc-header">
-    <div><h2 class="font-32-300">March 2021</h2></div>
-    <div class="month-navigation">
-      <button class="btn font-weight-700"> < </button>
-      <button class="btn font-weight-700"> > </button>
-      <button class="btn primary ml-1"> today </button>
-    </div>
+<!--    <div><h2 class="font-32-300">March 2021</h2></div>-->
+<!--    <div class="month-navigation">-->
+<!--      <button class="btn font-weight-700"> < </button>-->
+<!--      <button class="btn font-weight-700"> > </button>-->
+<!--      <button class="btn primary ml-1"> today </button>-->
+<!--    </div>-->
+    <fancy-calendar-calendar-title
+      [displayDate]="displayDate"
+      [locale]="locale"
+    ></fancy-calendar-calendar-title>
+    <fancy-calendar-calendar-month-navigation
+      (prev)="onPreviousMonthClick()"
+      (next)="onNextMonthClick()"
+      (today)="onNextMonthClick()"
+    ></fancy-calendar-calendar-month-navigation>
   </div>
-  <div class="fc-workdays">
-    <span class="font-16-300">Mon</span>
-    <span class="font-16-300">Tue</span>
-    <span class="font-16-300">Wed</span>
-    <span class="font-16-300">Thu</span>
-    <span class="font-16-300">Fri</span>
-    <span class="font-16-300 fc-is-weekend">Sat</span>
-    <span class="font-16-300 fc-is-weekend">Sun</span>
-  </div>
+<!--  <div class="fc-workdays">-->
+<!--    <span class="font-16-300">Mon</span>-->
+<!--    <span class="font-16-300">Tue</span>-->
+<!--    <span class="font-16-300">Wed</span>-->
+<!--    <span class="font-16-300">Thu</span>-->
+<!--    <span class="font-16-300">Fri</span>-->
+<!--    <span class="font-16-300 fc-is-weekend">Sat</span>-->
+<!--    <span class="font-16-300 fc-is-weekend">Sun</span>-->
+<!--  </div>-->
+  <fancy-calendar-calendar-days-of-week [locale]="locale"></fancy-calendar-calendar-days-of-week>
   <div class="fc-month-container">
     <ng-container *ngFor="let day of days">
       <div class="fc-day">

@@ -1,0 +1,7 @@
+<div class="fc-workdays">
+  <span
+    *ngFor="let day of daysOfWeek"
+    class="font-16-300"
+    [class.fc-is-weekend]="day.isWeekend"
+  >{{ getDayOfWeekName(day.date) }}</span>
+</div>

@@ -5,6 +5,9 @@ import {RouterModule} from "@angular/router";
 import {SharedModalModule} from "@fancy-calendar/shared/modal";
 
 import { CalendarViewComponent } from './calendar-view/calendar-view.component';
+import { CalendarTitleComponent } from './components/calendar-title/calendar-title.component';
+import { CalendarMonthNavigationComponent } from './components/calendar-month-navigation/calendar-month-navigation.component';
+import { CalendarDaysOfWeekComponent } from './components/calendar-days-of-week/calendar-days-of-week.component';
 
 @NgModule({
   imports: [
@@ -17,6 +20,6 @@ import { CalendarViewComponent } from './calendar-view/calendar-view.component';
     ]),
     SharedModalModule,
   ],
-  declarations: [CalendarViewComponent],
+  declarations: [CalendarViewComponent, CalendarTitleComponent, CalendarMonthNavigationComponent, CalendarDaysOfWeekComponent],
 })
 export class CalendarFeaturesCalendarModule {}
