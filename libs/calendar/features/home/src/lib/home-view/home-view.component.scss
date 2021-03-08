@@ -1,0 +1,24 @@
+@import "./apps/calendar-app/src/assets/scss/common/variables";
+
+.home-container {
+  display: flex;
+  justify-content: center;
+
+  margin: 0 2.5rem;
+  padding: 5rem 2.5rem;
+  background-color: $white;
+  border-radius: 6px;
+  box-shadow: 0 1px 2px #c3c3c3;
+
+  // Todo fix color change
+  img {
+    width: 8rem;
+    --color-1: #{#e83e8c};
+  }
+
+  p {
+    margin-left: 2.5rem;
+    width: 20rem;
+  }
+}
+

@@ -8,11 +8,15 @@ export const APP_ROUTES: Routes = [
   },
   {
     path: 'home',
-    loadChildren: () => import('@fancy-calendar/calendar/features/dashboard').then((m) => m.CalendarFeaturesDashboardModule)
+    loadChildren: () => import('@fancy-calendar/calendar/features/home').then((m) => m.CalendarFeaturesHomeModule)
   },
   {
     path: 'calendar',
     loadChildren: () => import('@fancy-calendar/calendar/features/calendar').then((m) => m.CalendarFeaturesCalendarModule)
+  },
+  {
+    path: 'test',
+    loadChildren: () => import('@fancy-calendar/calendar/features/dashboard').then((m) => m.CalendarFeaturesDashboardModule)
   },
   {
     path: '**',
