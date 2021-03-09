@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TimeNavigationComponent } from './time-navigation.component';
+import { CalendarDayCardComponent } from './calendar-day-card.component';
 
-describe('TimeNavigationComponent', () => {
-  let component: TimeNavigationComponent;
-  let fixture: ComponentFixture<TimeNavigationComponent>;
+describe('CalendarDayCardComponent', () => {
+  let component: CalendarDayCardComponent;
+  let fixture: ComponentFixture<CalendarDayCardComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TimeNavigationComponent ]
+      declarations: [ CalendarDayCardComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TimeNavigationComponent);
+    fixture = TestBed.createComponent(CalendarDayCardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

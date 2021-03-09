@@ -1,12 +1,13 @@
-import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
-import {BehaviorSubject, Observable} from "rxjs";
+import { ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
+import { Observable } from 'rxjs';
 
-import {Day, Meeting, Week} from '@fancy-calendar/calendar/types';
-import {CalendarGeneratorService, MonthService, WeekService} from '@fancy-calendar/calendar/dates';
-import {MeetingsService} from '@fancy-calendar/calendar/api';
-import {ModalService} from '@fancy-calendar/shared/modal';
-import {LocaleService} from '@fancy-calendar/calendar/dates';
-import { EventsStateService } from "../+state/events-state.service";
+import { Day, Meeting, Week } from '@fancy-calendar/calendar/types';
+import { CalendarGeneratorService, MonthService, WeekService } from '@fancy-calendar/calendar/dates';
+import { MeetingsService } from '@fancy-calendar/calendar/api';
+import { ModalService } from '@fancy-calendar/shared/modal';
+import { LocaleService } from '@fancy-calendar/calendar/dates';
+
+import { EventsStateService } from '../+state/events-state.service';
 
 @Component({
   selector: 'fancy-calendar-calendar-view',
@@ -15,7 +16,7 @@ import { EventsStateService } from "../+state/events-state.service";
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CalendarViewComponent implements OnInit {
-  monthlyEvents$: Observable<Meeting[]> = this.eventsState.events$;
+  readonly selectedDayModalId = 'selected-day-modal';
 
   private get year(): number {
     return this.displayDate.getFullYear();
@@ -47,10 +48,7 @@ export class CalendarViewComponent implements OnInit {
 
   displayDate = new Date();
   weeksInMonth: Week[];
-
-  days: Day[] = [
-    { number: 1, date: new Date(), isWeekend: false}
-  ];
+  selectedDay: Day;
 
   constructor(
     private weekService: WeekService,
@@ -61,8 +59,7 @@ export class CalendarViewComponent implements OnInit {
     private modalService: ModalService,
     private localeService: LocaleService,
   ) {
-    // this.locale = this.localeService.getBrowserLanguage();
-    this.makeFakeDays();
+    this.locale = this.localeService.getBrowserLanguage();
   }
 
   ngOnInit(): void {
@@ -88,35 +85,46 @@ export class CalendarViewComponent implements OnInit {
     this.loadWeeksPerMonth();
   }
 
+  closeModal() {
+    this.modalService.close(this.selectedDayModalId);
+  }
+
+  onDaySelect(day: Day) {
+    this.modalService.open(this.selectedDayModalId);
+    this.selectedDay = day;
+  }
+
   getDayEvents(dayNumber: number): Observable<Meeting[]> {
     return  this.eventsState.getDailyEvents(dayNumber);
   }
+
   private loadWeeksPerMonth(): void {
     this.weeksInMonth = this.calendarGeneratorService.getWeeksInMonth(this.year, this.month);
   }
 
-  private makeFakeDays(): void {
-    for (let i = 1; i <= 31; i++) {
-      let isToday = false;
-      if( i === 8)  {
-        isToday = true;
-      }
-
-      let isWeekend = false;
-      if( [5, 6, 12, 13, 19, 20, 26, 27].includes(i))  {
-        isWeekend = true;
-      }
-
-      const events = ['Daily stand-up', 'Meeting'];
-
-      // year: number, month: number, date?: number
-      this.days.push({
-        number: i,
-        date: new Date(2021, 2, i),
-        isWeekend,
-        isToday,
-        events: (i === 5 || i === 8) ? events : [],
-      } as Day)
-    }
-  }
+  // Todo use for the isToday generation
+  // private makeFakeDays(): void {
+  //   for (let i = 1; i <= 31; i++) {
+  //     let isToday = false;
+  //     if( i === 8)  {
+  //       isToday = true;
+  //     }
+  //
+  //     let isWeekend = false;
+  //     if( [5, 6, 12, 13, 19, 20, 26, 27].includes(i))  {
+  //       isWeekend = true;
+  //     }
+  //
+  //     const events = ['Daily stand-up', 'Meeting'];
+  //
+  //     // year: number, month: number, date?: number
+  //     this.days.push({
+  //       number: i,
+  //       date: new Date(2021, 2, i),
+  //       isWeekend,
+  //       isToday,
+  //       events: (i === 5 || i === 8) ? events : [],
+  //     } as Day)
+  //   }
+  // }
 }

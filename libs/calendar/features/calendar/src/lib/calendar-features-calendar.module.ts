@@ -6,10 +6,11 @@ import {SharedModalModule} from "@fancy-calendar/shared/modal";
 import { EventsStateService } from "./+state/events-state.service";
 
 import { CalendarViewComponent } from './calendar-view/calendar-view.component';
+import { CalendarDayCardComponent } from "./components/calendar-day-card/calendar-day-card.component";
 import { CalendarTitleComponent } from './components/calendar-title/calendar-title.component';
 import { CalendarMonthNavigationComponent } from './components/calendar-month-navigation/calendar-month-navigation.component';
 import { CalendarDaysOfWeekComponent } from './components/calendar-days-of-week/calendar-days-of-week.component';
-import { CalendarDayComponent } from './components/calendar-day/calendar-day.component';
+import { CalendarDayDetailsComponent } from './components/calendar-day-details/calendar-day-details.component';
 
 @NgModule({
   imports: [
@@ -22,7 +23,14 @@ import { CalendarDayComponent } from './components/calendar-day/calendar-day.com
     ]),
     SharedModalModule,
   ],
-  declarations: [CalendarViewComponent, CalendarTitleComponent, CalendarMonthNavigationComponent, CalendarDaysOfWeekComponent, CalendarDayComponent],
+  declarations: [
+    CalendarViewComponent,
+    CalendarTitleComponent,
+    CalendarMonthNavigationComponent,
+    CalendarDaysOfWeekComponent,
+    CalendarDayCardComponent,
+    CalendarDayDetailsComponent
+  ],
   providers: [EventsStateService],
 })
 export class CalendarFeaturesCalendarModule {}

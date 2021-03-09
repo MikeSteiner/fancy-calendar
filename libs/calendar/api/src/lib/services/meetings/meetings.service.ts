@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
-import {Observable} from 'rxjs';
-import {map, tap} from 'rxjs/operators';
+import { HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
+import { Observable} from 'rxjs';
+import { map, tap } from 'rxjs/operators';
 
-import {Meeting} from '@fancy-calendar/calendar/types';
+import { Meeting } from '@fancy-calendar/calendar/types';
 
 @Injectable({
   providedIn: 'root'
@@ -35,8 +35,8 @@ export class MeetingsService {
     );
   }
 
+  // Todo this filtering has to be done in the backend
   getByMonth(year: number, month: number): Observable<Meeting[]> {
-    // Todo this filtering has to be done in the backend
     return this.getAll().pipe(
       // tap((res) => console.log(res)),
       map((meetings: Meeting[]) => {

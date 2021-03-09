@@ -1,11 +1,5 @@
 <div class="fc-container">
   <div class="fc-header">
-<!--    <div><h2 class="font-32-300">March 2021</h2></div>-->
-<!--    <div class="month-navigation">-->
-<!--      <button class="btn font-weight-700"> < </button>-->
-<!--      <button class="btn font-weight-700"> > </button>-->
-<!--      <button class="btn primary ml-1"> today </button>-->
-<!--    </div>-->
     <fancy-calendar-calendar-title
       [displayDate]="displayDate"
       [locale]="locale"
@@ -16,45 +10,30 @@
       (today)="onTodayClick()"
     ></fancy-calendar-calendar-month-navigation>
   </div>
-<!--  <div class="fc-workdays">-->
-<!--    <span class="font-16-300">Mon</span>-->
-<!--    <span class="font-16-300">Tue</span>-->
-<!--    <span class="font-16-300">Wed</span>-->
-<!--    <span class="font-16-300">Thu</span>-->
-<!--    <span class="font-16-300">Fri</span>-->
-<!--    <span class="font-16-300 fc-is-weekend">Sat</span>-->
-<!--    <span class="font-16-300 fc-is-weekend">Sun</span>-->
-<!--  </div>-->
+
   <fancy-calendar-calendar-days-of-week [locale]="locale"></fancy-calendar-calendar-days-of-week>
+
   <div class="fc-month-container">
     <ng-container *ngFor="let week of weeksInMonth">
       <ng-container *ngFor="let day of week.days">
 
-<!--        <div class="fc-day">-->
-<!--          <div-->
-<!--            class="fc-day-number"-->
-<!--            [class.fc-is-today]="day.isToday"-->
-<!--            [class.fc-is-weekend]="day.isWeekend"-->
-<!--          >{{ day.number }}</div>-->
-<!--                  <div *ngFor="let event of day.events" class="fc-day-event important">{{ event }}</div>-->
-<!--        </div>-->
-        <fancy-calendar-calendar-day
+        <fancy-calendar-calendar-day-card
           [locale]="locale"
           [day]="day"
           [events$]="getDayEvents(day.number)"
-        ></fancy-calendar-calendar-day>
+          (click)="onDaySelect(day)"
+        ></fancy-calendar-calendar-day-card>
 
       </ng-container>
     </ng-container>
-<!--    <ng-container *ngFor="let day of days">-->
-<!--      <div class="fc-day">-->
-<!--        <div-->
-<!--          class="fc-day-number"-->
-<!--          [class.fc-is-today]="day.isToday"-->
-<!--          [class.fc-is-weekend]="day.isWeekend"-->
-<!--        >{{ day.number }}</div>-->
-<!--&lt;!&ndash;        <div *ngFor="let event of day.events" class="fc-day-event important">{{ event }}</div>&ndash;&gt;-->
-<!--      </div>-->
-<!--    </ng-container>-->
   </div>
 </div>
+
+<fancy-calendar-modal [id]="selectedDayModalId">
+  <fancy-calendar-calendar-day-details *ngIf="selectedDay"
+    [locale]="locale"
+    [day]="selectedDay"
+    [events$]="getDayEvents(selectedDay.number)"
+  ></fancy-calendar-calendar-day-details>
+  <button class="btn primary mt-1" (click)="closeModal()">Close</button>
+</fancy-calendar-modal>
