@@ -84,6 +84,7 @@ export class EventsStateService {
     )
   }
 
+  // Todo extract to date management service
   private compareDates(a: Date, b: Date): number {
     const msDateA: number = a.getTime();
     const msDateB: number = b.getTime();

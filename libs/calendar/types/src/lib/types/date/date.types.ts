@@ -2,9 +2,9 @@ export interface Day {
   date: Date;
   number: number;
   isWeekend: boolean;
+  isToday?: boolean;
   inDisabled?: boolean;
   isSelected?: boolean;
-  isToday?: boolean;
 }
 
 export interface Week {

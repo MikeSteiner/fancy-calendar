@@ -184,6 +184,20 @@
       "participants": []
     },
     {
+      "start": "2021-03-04T15:00:00.000Z",
+      "end": "2021-03-04T15:45:00.000Z",
+      "name": "Evening Drinks Meeting",
+      "meetingRoom": "Arbanasi",
+      "participants": []
+    },
+    {
+      "start": "2021-03-04T15:45:00.000Z",
+      "end": "2021-03-04T16:30:00.000Z",
+      "name": "Night Whisky Meeting",
+      "meetingRoom": "Arbanasi",
+      "participants": []
+    },
+    {
       "start": "2021-03-04T08:00:00.000Z",
       "end": "2021-03-04T08:30:00.000Z",
       "name": "Morning Coffee Meeting",

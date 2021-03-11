@@ -6,6 +6,7 @@
 
   min-width: 7.5rem;
   min-height:6.7rem;
+  height:6.7rem;
 
   //background-color: darkgrey;
   background-color: $white;
@@ -32,6 +33,8 @@
     background-color: lightgrey;
     color: $gray-700;
     max-width: 7.852rem;
+    // Fix the fixed height use flex and no shrink for the parent container
+    min-height: 1.152rem;
     overflow: hidden;
     line-height: 1rem;
 

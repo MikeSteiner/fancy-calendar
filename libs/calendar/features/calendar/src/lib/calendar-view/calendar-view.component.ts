@@ -67,8 +67,6 @@ export class CalendarViewComponent implements OnInit {
   ngOnInit(): void {
     this.eventsState.loadMonthlyEvents(this.year, this.month);
     this.eventsLoading$ = this.eventsState.eventsLoading$;
-    // this.dateEventsMap = this.eventsState.events$.pipe(
-    // );
     this.loadWeeksPerMonth();
   }
 

@@ -31,10 +31,7 @@ export class CalendarGeneratorService {
 
   getWeeksInMonth(year: number, month: number): Week[] {
     const dateOne: Date = new Date(year, month, this.monthService.getFirstDay());
-    console.log(dateOne);
-
     const weekNumbers: number[] = this.getWeekNumbersInMonth(dateOne);
-    console.log(weekNumbers);
 
     const weeks = [];
     weekNumbers.forEach((n, index) => {
@@ -47,13 +44,19 @@ export class CalendarGeneratorService {
   }
 
   private generateDay(date: Date): Day {
+    const now: Date = new Date();
     const number = date.getDate();
     const isWeekend: boolean = date.getUTCDay() === WeekUTCDay.Saturday || date.getUTCDay() === WeekUTCDay.Sunday;
+    const isToday: boolean =
+      date.getDate() === now.getDate() &&
+      date.getMonth() === now.getMonth() &&
+      date.getFullYear() === now.getFullYear();
 
     return {
       number,
       date,
       isWeekend,
+      isToday,
     }
   }
 
