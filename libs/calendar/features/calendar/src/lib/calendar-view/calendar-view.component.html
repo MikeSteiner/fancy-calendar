@@ -16,24 +16,28 @@
   <div class="fc-month-container">
     <ng-container *ngFor="let week of weeksInMonth">
       <ng-container *ngFor="let day of week.days">
-
+        <!--          [events$]="getDayEvents(day.date)"-->
         <fancy-calendar-calendar-day-card
           [locale]="locale"
           [day]="day"
-          [events$]="getDayEvents(day.number)"
-          (click)="onDaySelect(day)"
+          [eventsLoading]="eventsLoading$ | async"
+          (click)="onSelectDay(day)"
         ></fancy-calendar-calendar-day-card>
-
       </ng-container>
     </ng-container>
   </div>
 </div>
 
 <fancy-calendar-modal [id]="selectedDayModalId">
-  <fancy-calendar-calendar-day-details *ngIf="selectedDay"
+<!--  <fancy-calendar-calendar-day-details *ngIf="selectedDay"-->
+<!--    [locale]="locale"-->
+<!--    [day]="selectedDay"-->
+<!--    [events]="getDayEvents(selectedDay.number) | async"-->
+<!--  ></fancy-calendar-calendar-day-details>-->
+  <fancy-calendar-calendar-day-details
+    *ngIf="selectedDay"
     [locale]="locale"
     [day]="selectedDay"
-    [events$]="getDayEvents(selectedDay.number)"
   ></fancy-calendar-calendar-day-details>
   <button class="btn primary mt-1" (click)="closeModal()">Close</button>
 </fancy-calendar-modal>

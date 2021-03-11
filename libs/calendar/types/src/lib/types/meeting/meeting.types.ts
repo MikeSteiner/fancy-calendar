@@ -4,4 +4,5 @@ export interface Meeting {
   name: string;
   meetingRoom: string;
   participants: string[];
+  conflictMeetingIds?: number[];
 }

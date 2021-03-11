@@ -5,11 +5,17 @@
     [class.fc-is-weekend]="day.isWeekend"
   >{{ day.number }}</div>
 
-  <div
-    *ngFor="let event of (events$ | async)"
-    class="fc-day-event important"
-  >
-    <span class="font-10-300">{{ event.start | date: 'shortTime' : null : locale }};</span>
-    <span class="font-10-300">{{ event.name }}</span>
-  </div>
+  <div *ngIf="eventsLoading" class="font-14-300">Loading...</div>
+  <ng-container *ngIf="!eventsLoading">
+    <div
+      *ngFor="let event of (events$ | async)"
+      class="fc-day-event info"
+      [class.important]="event.conflictMeetingIds.length"
+    >
+      <span class="font-10-300">{{ event.conflictMeetingIds }}:</span>
+      <span class="font-10-300">{{ event.start | date: 'shortTime' : null : locale }};</span>
+      <span class="font-10-300">{{ event.name }}</span>
+    </div>
+  </ng-container>
+
 </div>

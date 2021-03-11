@@ -49,6 +49,8 @@ export class CalendarViewComponent implements OnInit {
   displayDate = new Date();
   weeksInMonth: Week[];
   selectedDay: Day;
+  dateEventsMap: Map<Date, Meeting[]> = new Map<Date, Meeting[]>();
+  eventsLoading$: Observable<boolean>;
 
   constructor(
     private weekService: WeekService,
@@ -64,6 +66,9 @@ export class CalendarViewComponent implements OnInit {
 
   ngOnInit(): void {
     this.eventsState.loadMonthlyEvents(this.year, this.month);
+    this.eventsLoading$ = this.eventsState.eventsLoading$;
+    // this.dateEventsMap = this.eventsState.events$.pipe(
+    // );
     this.loadWeeksPerMonth();
   }
 
@@ -87,15 +92,18 @@ export class CalendarViewComponent implements OnInit {
 
   closeModal() {
     this.modalService.close(this.selectedDayModalId);
+    this.selectedDay = null;
   }
 
-  onDaySelect(day: Day) {
+  onSelectDay(day: Day) {
     this.modalService.open(this.selectedDayModalId);
     this.selectedDay = day;
   }
 
-  getDayEvents(dayNumber: number): Observable<Meeting[]> {
-    return  this.eventsState.getDailyEvents(dayNumber);
+  getDailyEvents(date: Date): Observable<Meeting[]> {
+    // return this.eventsState.getDailyEvents(dayNumber);
+    console.log(date)
+    return this.eventsState.getDailyEventsOrdered(date);
   }
 
   private loadWeeksPerMonth(): void {

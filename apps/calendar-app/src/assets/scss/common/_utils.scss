@@ -21,6 +21,9 @@ $default_offset: 0.25rem;
 .p-0 {
   padding: 0 !important;
 }
+.p-1 {
+  padding: $default_offset !important;
+}
 .pt-1 {
   padding-top: $default_offset !important;
 }

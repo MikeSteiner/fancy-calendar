@@ -1,17 +1,21 @@
 <h1>{{ title }}!</h1>
-<h3 *ngIf="(events$ | async).length; else noMeetings">All Meetings:</h3>
+  <h3 *ngIf="(events$ | async)?.length; else noMeetings">All Meetings:</h3>
 
-<ng-container *ngFor="let event of (events$ | async)">
-  <hr>
-  <div >
-    <h3>{{ event?.name }} </h3>
-    <h4>{{ event?.meetingRoom }}</h4>
-    <span>from: {{ getTime(event?.start) }} </span>
-    <span>to: {{ getTime(event?.end) }}</span>
-    <span>{{ event?.participants }}</span>
-  </div>
-</ng-container>
-<hr>
+  <ng-container *ngFor="let event of (events$ | async ); let last=last">
+    <hr>
+    <div
+      class="info p-1"
+      [class.important]="event.conflictMeetingIds.length"
+    >
+      <h3>{{ event?.name }} </h3>
+      <h4>{{ event?.meetingRoom }}</h4>
+      <span>from: {{ getTime(event?.start) }} </span>
+      <span>to: {{ getTime(event?.end) }}</span>
+      <span>{{ event?.participants }}</span>
+    </div>
+    <hr *ngIf="last">
+  </ng-container>
+
 
 <ng-template #noMeetings>
   <h3>No Meetings for this day.</h3>
