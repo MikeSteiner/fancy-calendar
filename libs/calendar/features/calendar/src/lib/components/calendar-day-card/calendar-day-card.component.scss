@@ -8,7 +8,6 @@
   min-height:6.7rem;
   height:6.7rem;
 
-  //background-color: darkgrey;
   background-color: $white;
 
   &:hover {
@@ -23,14 +22,10 @@
     font-size: 16px;
     text-align: center;
     color: $white;
-    background-color: $green;
-
-    &-highlight {
-      background-color: #ff3b30;
-      color: #FFFFFF;
-      border-radius: 50%;
-    }
+    background-color: $confirm-green;
   }
+
+
 
   &-event {
     overflow: auto;
@@ -49,21 +44,30 @@
   }
 
   .info {
-    background-color: #c6ebfe;
+    background-color: $error-mid-blue;
   }
 
   .important {
-    background-color: #FFBEBE;
+    background-color: $error-mid-red;
   }
 }
 
 .fc-is-today {
   color: $white;
-  background-color: #ff3b30;
+  background-color: $error-red;
 }
 
 // Todo extract to general pace and reuse
 .fc-is-weekend {
   color: $gray-700;
   background-color: $sunny-yellow;
+}
+
+.fc-is-day-disabled {
+  background-color: rgba($ultralight-grey, 1);;
+}
+
+.fc-is-day-number-disabled {
+  color: rgba($gray-700, 0.7);
+  background-color: rgba($gray-300, 0.7);;
 }

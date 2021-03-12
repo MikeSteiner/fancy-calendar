@@ -33,7 +33,6 @@ export class CalendarDayDetailsComponent implements OnInit {
   constructor(private eventsState: EventsStateService) { }
 
   ngOnInit(): void {
-    // this.events$ = this.eventsState.getDailyEventsOrdered(this.day.number);
   }
 
   getTime(date: Date) {

@@ -1,8 +1,12 @@
-<div class="fc-day">
+<div
+  class="fc-day"
+  [class.fc-is-day-disabled]="day.inDisabled"
+>
   <div
     class="fc-day-number"
     [class.fc-is-today]="day.isToday"
     [class.fc-is-weekend]="day.isWeekend"
+    [class.fc-is-day-number-disabled]="day.inDisabled"
   >{{ day.number }}</div>
 
   <div *ngIf="eventsLoading" class="font-14-300">Loading...</div>
@@ -13,7 +17,9 @@
       [class.important]="event.conflictMeetingIds.length"
     >
       <span class="font-12-700" *ngIf="event.conflictMeetingIds.length">{{ event.conflictMeetingIds }}|</span>
-      <span class="font-10-300">{{ event.start | date: 'shortTime' : null : locale }};</span>
+<!--      Todo make custom pipe with locale -->
+<!--      <span class="font-10-300">{{ event.start | date: 'shortTime' }};</span>-->
+      <span class="font-10-300">{{ getTime(event.start) }};</span>
       <span class="font-10-300">{{ event.name }}</span>
     </div>
   </ng-container>

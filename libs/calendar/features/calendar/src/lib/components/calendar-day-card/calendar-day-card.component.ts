@@ -16,6 +16,7 @@ export class CalendarDayCardComponent implements OnInit {
   @Input() eventsLoading: boolean = true;
   // @Input() events$: Observable<Meeting[]>;
   @Input() locale: string;
+  @Input() isDisabled: boolean;
 
   events$: Observable<Meeting[]>;
 
@@ -26,4 +27,8 @@ export class CalendarDayCardComponent implements OnInit {
     this.events$ = this.eventsState.getDailyEventsOrderedWithConflictMeetings(this.day.date);
   }
 
+  getTime(date: Date) {
+    const options = { hour: '2-digit', minute: '2-digit' };
+    return new Intl.DateTimeFormat(this.locale, options).format(date);
+  }
 }

@@ -43,8 +43,6 @@ export class CalendarViewComponent implements OnInit {
   }
 
   locale = 'en-US';
-  // locale = 'de-DE';
-  // locale = 'bg-BG';
 
   displayDate = new Date();
   weeksInMonth: Week[];
@@ -62,6 +60,8 @@ export class CalendarViewComponent implements OnInit {
     private localeService: LocaleService,
   ) {
     this.locale = this.localeService.getBrowserLanguage();
+    // this.locale = 'de-DE';
+    // this.locale = 'bg-BG';
   }
 
   ngOnInit(): void {
@@ -100,37 +100,11 @@ export class CalendarViewComponent implements OnInit {
 
   getDailyEvents(date: Date): Observable<Meeting[]> {
     // return this.eventsState.getDailyEvents(dayNumber);
-    console.log(date)
     return this.eventsState.getDailyEventsOrdered(date);
   }
 
   private loadWeeksPerMonth(): void {
-    this.weeksInMonth = this.calendarGeneratorService.getWeeksInMonth(this.year, this.month);
+    // this.weeksInMonth = this.calendarGeneratorService.getWeeksInMonth(this.year, this.month);
+    this.weeksInMonth = this.calendarGeneratorService.getWeeksInMonthWithDisabledDayState(this.year, this.month);
   }
-
-  // Todo use for the isToday generation
-  // private makeFakeDays(): void {
-  //   for (let i = 1; i <= 31; i++) {
-  //     let isToday = false;
-  //     if( i === 8)  {
-  //       isToday = true;
-  //     }
-  //
-  //     let isWeekend = false;
-  //     if( [5, 6, 12, 13, 19, 20, 26, 27].includes(i))  {
-  //       isWeekend = true;
-  //     }
-  //
-  //     const events = ['Daily stand-up', 'Meeting'];
-  //
-  //     // year: number, month: number, date?: number
-  //     this.days.push({
-  //       number: i,
-  //       date: new Date(2021, 2, i),
-  //       isWeekend,
-  //       isToday,
-  //       events: (i === 5 || i === 8) ? events : [],
-  //     } as Day)
-  //   }
-  // }
 }

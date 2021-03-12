@@ -43,6 +43,23 @@ export class CalendarGeneratorService {
     return weeks;
   }
 
+  getWeeksInMonthWithDisabledDayState(year: number, month: number): Week[] {
+    const weeks: Week[] = this.getWeeksInMonth(year, month);
+    const weeksUpdated: Week[] = weeks.map((week: Week) => {
+      return {
+        ...week,
+        days: week.days.map((day) => {
+          return {
+            ...day,
+            inDisabled: (day.date.getMonth() !== month),
+          }
+        })
+      }
+    });
+
+    return weeksUpdated;
+  }
+
   private generateDay(date: Date): Day {
     const now: Date = new Date();
     const number = date.getDate();
