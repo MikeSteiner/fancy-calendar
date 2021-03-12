@@ -7,7 +7,7 @@ import { MeetingsService } from '@fancy-calendar/calendar/api';
 import { ModalService } from '@fancy-calendar/shared/modal';
 import { LocaleService } from '@fancy-calendar/calendar/dates';
 
-import { EventsStateService } from '../+state/events-state.service';
+import { MeetingsStateService } from "../+state/meetings-state.service";
 
 @Component({
   selector: 'fancy-calendar-calendar-view',
@@ -47,17 +47,17 @@ export class CalendarViewComponent implements OnInit {
   displayDate = new Date();
   weeksInMonth: Week[];
   selectedDay: Day;
-  dateEventsMap: Map<Date, Meeting[]> = new Map<Date, Meeting[]>();
-  eventsLoading$: Observable<boolean>;
+
+  monthlyMeetingsLoading$: Observable<boolean> = this.meetingsStateService.loading$;
 
   constructor(
     private weekService: WeekService,
     private monthService: MonthService,
     private calendarGeneratorService: CalendarGeneratorService,
     private meetingsService: MeetingsService,
-    private eventsState: EventsStateService,
     private modalService: ModalService,
     private localeService: LocaleService,
+    private meetingsStateService: MeetingsStateService,
   ) {
     this.locale = this.localeService.getBrowserLanguage();
     // this.locale = 'de-DE';
@@ -65,26 +65,25 @@ export class CalendarViewComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.eventsState.loadMonthlyEvents(this.year, this.month);
-    this.eventsLoading$ = this.eventsState.eventsLoading$;
+    this.meetingsStateService.loadMonthlyEvents(this.year, this.month);
     this.loadWeeksPerMonth();
   }
 
   onPreviousMonthClick(): void {
     this.displayDate = this.calendarGeneratorService.addDays(this.displayDate, (-1) * this.daysInPrevMonthCount);
-    this.eventsState.loadMonthlyEvents(this.year, this.month);
+    this.meetingsStateService.loadMonthlyEvents(this.year, this.month);
     this.loadWeeksPerMonth();
   }
 
   onNextMonthClick(): void {
     this.displayDate = this.calendarGeneratorService.addDays(this.displayDate, this.daysInMonthCount);
-    this.eventsState.loadMonthlyEvents(this.year, this.month);
+    this.meetingsStateService.loadMonthlyEvents(this.year, this.month);
     this.loadWeeksPerMonth();
   }
 
   onTodayClick(): void {
     this.displayDate = new Date();
-    this.eventsState.loadMonthlyEvents(this.year, this.month);
+    this.meetingsStateService.loadMonthlyEvents(this.year, this.month);
     this.loadWeeksPerMonth();
   }
 
@@ -99,12 +98,10 @@ export class CalendarViewComponent implements OnInit {
   }
 
   getDailyEvents(date: Date): Observable<Meeting[]> {
-    // return this.eventsState.getDailyEvents(dayNumber);
-    return this.eventsState.getDailyEventsOrdered(date);
+    return this.meetingsStateService.getDailyEventsOrderedWithConflictMeetings(date);
   }
 
   private loadWeeksPerMonth(): void {
-    // this.weeksInMonth = this.calendarGeneratorService.getWeeksInMonth(this.year, this.month);
     this.weeksInMonth = this.calendarGeneratorService.getWeeksInMonthWithDisabledDayState(this.year, this.month);
   }
 }

@@ -1,7 +1,9 @@
 <h1>{{ title }}!</h1>
-  <h3 *ngIf="(events$ | async)?.length; else noMeetings">All Meetings:</h3>
+<!--  <h3 *ngIf="(events$ | async)?.length; else noMeetings">All Meetings:</h3>-->
+  <h3 *ngIf="events?.length; else noMeetings">All Meetings:</h3>
 
-  <ng-container *ngFor="let event of (events$ | async ); let last=last">
+<!--  <ng-container *ngFor="let event of (events$ | async ); let last=last">-->
+  <ng-container *ngFor="let event of events; let last=last">
     <hr>
     <div
       class="info p-1"

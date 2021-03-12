@@ -12,7 +12,7 @@
   <div *ngIf="eventsLoading" class="font-14-300">Loading...</div>
   <ng-container *ngIf="!eventsLoading">
     <div
-      *ngFor="let event of (events$ | async)"
+      *ngFor="let event of events"
       class="fc-day-event info"
       [class.important]="event.conflictMeetingIds.length"
     >
