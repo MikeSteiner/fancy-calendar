@@ -1,6 +1,5 @@
 module.exports = {
   projects: [
-    '<rootDir>/apps/main-app',
     '<rootDir>/libs/calendar',
     '<rootDir>/apps/calendar',
     '<rootDir>/libs/calendar/api',

@@ -21,7 +21,6 @@
     }
   },
   "projects": {
-    "main-app": { "tags": [] },
     "calendar-app": { "tags": ["scope:calendar-app", "scope:shared"] },
     "calendar-app-e2e": {
       "tags": [],
