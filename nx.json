@@ -22,7 +22,6 @@
   },
   "projects": {
     "main-app": { "tags": [] },
-    "main-app-e2e": { "tags": [], "implicitDependencies": ["main-app"] },
     "calendar-app": { "tags": ["scope:calendar-app", "scope:shared"] },
     "calendar-app-e2e": {
       "tags": [],
