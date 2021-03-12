@@ -1,9 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {RouterModule} from "@angular/router";
+import { MeetingsService } from "@fancy-calendar/calendar/api";
 
 import {SharedModalModule} from "@fancy-calendar/shared/modal";
+import { BaseStateService } from "./+state/base-state.service";
 import { EventsStateService } from "./+state/events-state.service";
+import { MeetingsStateService } from "./+state/meetings-state.service";
 
 import { CalendarViewComponent } from './calendar-view/calendar-view.component';
 import { CalendarDayCardComponent } from "./components/calendar-day-card/calendar-day-card.component";
@@ -31,6 +34,6 @@ import { CalendarDayDetailsComponent } from './components/calendar-day-details/c
     CalendarDayCardComponent,
     CalendarDayDetailsComponent
   ],
-  providers: [EventsStateService],
+  providers: [EventsStateService, BaseStateService, MeetingsStateService],
 })
 export class CalendarFeaturesCalendarModule {}

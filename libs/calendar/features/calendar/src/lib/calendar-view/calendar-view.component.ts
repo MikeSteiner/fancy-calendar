@@ -8,6 +8,7 @@ import { ModalService } from '@fancy-calendar/shared/modal';
 import { LocaleService } from '@fancy-calendar/calendar/dates';
 
 import { EventsStateService } from '../+state/events-state.service';
+import { MeetingsStateService } from "../+state/meetings-state.service";
 
 @Component({
   selector: 'fancy-calendar-calendar-view',
@@ -50,6 +51,8 @@ export class CalendarViewComponent implements OnInit {
   dateEventsMap: Map<Date, Meeting[]> = new Map<Date, Meeting[]>();
   eventsLoading$: Observable<boolean>;
 
+  allMeetings$: Observable<Meeting[]> = this.meetingsStateService.meetings$;
+
   constructor(
     private weekService: WeekService,
     private monthService: MonthService,
@@ -58,6 +61,7 @@ export class CalendarViewComponent implements OnInit {
     private eventsState: EventsStateService,
     private modalService: ModalService,
     private localeService: LocaleService,
+    private meetingsStateService: MeetingsStateService,
   ) {
     this.locale = this.localeService.getBrowserLanguage();
     // this.locale = 'de-DE';
@@ -67,6 +71,7 @@ export class CalendarViewComponent implements OnInit {
   ngOnInit(): void {
     this.eventsState.loadMonthlyEvents(this.year, this.month);
     this.eventsLoading$ = this.eventsState.eventsLoading$;
+    this.meetingsStateService.loadMonthlyEvents(this.year, this.month);
     this.loadWeeksPerMonth();
   }
 
