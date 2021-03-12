@@ -11,6 +11,11 @@
   //background-color: darkgrey;
   background-color: $white;
 
+  &:hover {
+    cursor: pointer;
+    background-color: rgba($ultralight-grey, 1);
+  }
+
   &-number {
     align-self: flex-end;
 
