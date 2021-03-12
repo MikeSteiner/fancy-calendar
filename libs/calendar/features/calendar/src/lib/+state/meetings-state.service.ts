@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { distinctUntilChanged, map } from 'rxjs/operators';
 
 import { MeetingsService } from '@fancy-calendar/calendar/api';
 import { Meeting } from '@fancy-calendar/calendar/types';
@@ -47,7 +47,9 @@ export class MeetingsStateService extends BaseStateService<MeetingsState>{
     );
   }
 
+  // Todo fix refetching the meetings on view port click
   getDailyEvents(date: Date): Observable<Meeting[]> {
+    console.log('SELECT daily events '+date.getDate());
     return this.meetings$.pipe(
       map((events: Meeting[]) => events.filter((event) => {
         const isInCurrentDate: boolean =
@@ -56,7 +58,8 @@ export class MeetingsStateService extends BaseStateService<MeetingsState>{
           event.start.getFullYear() === date.getFullYear();
 
         return isInCurrentDate;
-      }))
+      })),
+      distinctUntilChanged()
     )
   }
 
@@ -86,7 +89,8 @@ export class MeetingsStateService extends BaseStateService<MeetingsState>{
         });
 
         return comparedEvents;
-      })
+      }),
+      distinctUntilChanged()
     )
   }
 
