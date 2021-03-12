@@ -171,31 +171,6 @@
         }
       }
     },
-    "calendar-features-dashboard": {
-      "projectType": "library",
-      "root": "libs/calendar/features/dashboard",
-      "sourceRoot": "libs/calendar/features/dashboard/src",
-      "prefix": "fancy-calendar",
-      "architect": {
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/calendar/features/dashboard/src/**/*.ts",
-              "libs/calendar/features/dashboard/src/**/*.html"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/calendar/features/dashboard"],
-          "options": {
-            "jestConfig": "libs/calendar/features/dashboard/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      }
-    },
     "calendar-app": {
       "projectType": "application",
       "root": "apps/calendar-app",
