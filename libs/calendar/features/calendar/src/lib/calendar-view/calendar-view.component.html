@@ -1,4 +1,6 @@
-->>>{{ allMeetings$ | async | json }}
+<!-- ->>>{{ monthlyMeetingsLoading$ | async }}-->
+<!--<br>-->
+<!-- ->>>{{ monthlyMeetings$ | async | json }}-->
 
 <div class="fc-container">
   <div class="fc-header">
@@ -18,11 +20,11 @@
   <div class="fc-month-container">
     <ng-container *ngFor="let week of weeksInMonth">
       <ng-container *ngFor="let day of week.days">
-        <!--          [events$]="getDayEvents(day.date)"-->
         <fancy-calendar-calendar-day-card
           [locale]="locale"
           [day]="day"
-          [eventsLoading]="eventsLoading$ | async"
+          [events]="getDailyEvents(day.date) | async"
+          [eventsLoading]="monthlyMeetingsLoading$ | async"
           (click)="onSelectDay(day)"
         ></fancy-calendar-calendar-day-card>
       </ng-container>
@@ -31,15 +33,11 @@
 </div>
 
 <fancy-calendar-modal [id]="selectedDayModalId">
-<!--  <fancy-calendar-calendar-day-details *ngIf="selectedDay"-->
-<!--    [locale]="locale"-->
-<!--    [day]="selectedDay"-->
-<!--    [events]="getDayEvents(selectedDay.number) | async"-->
-<!--  ></fancy-calendar-calendar-day-details>-->
   <fancy-calendar-calendar-day-details
     *ngIf="selectedDay"
     [locale]="locale"
     [day]="selectedDay"
+    [events]="getDailyEvents(selectedDay.date) | async"
   ></fancy-calendar-calendar-day-details>
   <button class="btn primary mt-1" (click)="closeModal()">Close</button>
 </fancy-calendar-modal>
